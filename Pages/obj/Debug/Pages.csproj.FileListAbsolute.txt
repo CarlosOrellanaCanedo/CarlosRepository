@@ -1,0 +1,16 @@
+D:\JalasoftRepository\Pages\bin\Debug\Pages.dll
+D:\JalasoftRepository\Pages\bin\Debug\Pages.pdb
+D:\JalasoftRepository\Pages\bin\Debug\BlazorFramework.dll
+D:\JalasoftRepository\Pages\bin\Debug\Utilities.dll
+D:\JalasoftRepository\Pages\bin\Debug\WebDriver.Support.dll
+D:\JalasoftRepository\Pages\bin\Debug\WebDriver.dll
+D:\JalasoftRepository\Pages\bin\Debug\BlazorFramework.pdb
+D:\JalasoftRepository\Pages\bin\Debug\Utilities.pdb
+D:\JalasoftRepository\Pages\bin\Debug\WebDriver.Support.xml
+D:\JalasoftRepository\Pages\bin\Debug\WebDriver.xml
+D:\JalasoftRepository\Pages\obj\Debug\Pages.csprojAssemblyReference.cache
+D:\JalasoftRepository\Pages\obj\Debug\Pages.csproj.CoreCompileInputs.cache
+D:\JalasoftRepository\Pages\obj\Debug\Pages.csproj.CopyComplete
+D:\JalasoftRepository\Pages\obj\Debug\Pages.dll
+D:\JalasoftRepository\Pages\obj\Debug\Pages.pdb
+D:\JalasoftRepository\Pages\bin\Debug\Drivers\chromedriver.exe

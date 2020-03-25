@@ -1,0 +1,5 @@
+D:\JalasoftRepository\Utilities\bin\Debug\Utilities.dll
+D:\JalasoftRepository\Utilities\bin\Debug\Utilities.pdb
+D:\JalasoftRepository\Utilities\obj\Debug\Utilities.csproj.CoreCompileInputs.cache
+D:\JalasoftRepository\Utilities\obj\Debug\Utilities.dll
+D:\JalasoftRepository\Utilities\obj\Debug\Utilities.pdb
