@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Browser\BrowserExecutor.cs" />
     <Compile Include="Browser\BrowserManager.cs" />
     <Compile Include="Browser\DriverManager.cs" />
     <Compile Include="Browser\DriverUtils.cs" />

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BlazorFramework.Browser;
+using System;
 using Utilities.ExceptionMethods;
 
 namespace BlazorFramework.Controls
@@ -113,5 +110,15 @@ namespace BlazorFramework.Controls
             ExceptionManager.IsTrue(isDisplayed, messagePassed, messageFailed);
         }
 
+        public void JavaScriptClick()
+        {
+            BrowserExecutor.ExecuteJavaScript("arguments[0].click()", WebElement);
+            string message = $"The (Span) [ {ControlName} ] was clicked";
+        }
+
+        public string GetAttribute(string attibute_name)
+        {
+            return WebElement.GetAttribute(attibute_name);
+        }
     }
 }

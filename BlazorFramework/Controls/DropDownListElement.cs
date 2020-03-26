@@ -1,29 +1,12 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Utilities.ExceptionMethods;
 
 namespace BlazorFramework.Controls
 {
     public class DropDownListElement : WebElementBase
     {
-        private const string QuerySelectScript = "var x = arguments[0]; " +
-                                                     "var index = 0; " +
-                                                     "var txt = \"\"; " +
-                                                     "for (var i = 0; i < x.length; i++)" +
-                                                     "{" +
-                                                     "if(x.options[i].text == arguments[1])" +
-                                                     "{" +
-                                                     "index = i;" +
-                                                     "break;" +
-                                                     "}" +
-                                                     "}" +
-                                                     "x.selectedIndex = index;";
-
         public DropDownListElement()
         {
 

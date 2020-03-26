@@ -3,11 +3,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlazorFramework.Controls
 {
@@ -149,11 +145,66 @@ namespace BlazorFramework.Controls
 
         public static void ValidateUrlPage(string url)
         {
-            //new WebDriverWait(GetWebDriver, new TimeSpan(200)).Until(ExpectedConditions.UrlToBe("my-url"));
             if (GetWebDriver.Url.ToLowerInvariant().Equals(url.ToLowerInvariant()))
             {
                 throw new Exception($"The current URL does not: {url}");
             }
         }
+
+        public static void MouseHover_SubMenuClick(string PrimaryMenu, string SubMenu)
+        {
+            //Doing a MouseHover  
+            WebDriverWait wait = new WebDriverWait(GetWebDriver, TimeSpan.FromSeconds(10));
+            var element = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(PrimaryMenu)));
+            Actions action = new Actions(GetWebDriver);
+            action.MoveToElement(element).Perform();
+            //Clicking the SubMenu on MouseHover   
+            var menuelement = GetElement(By.XPath(SubMenu));
+            menuelement.Click();
+        }
+
+        public static void WaitForPageToLoad()
+        {
+            try
+            {
+                var javascript = (IJavaScriptExecutor)GetWebDriver;
+                if (javascript == null)
+                {
+                    string message = "Driver must support javascript execution";
+                    throw new ArgumentException(@"driver", message);
+                }
+
+                //TODO: review why this part made action on alert 
+                GetWaitDriver.Until(d =>
+                {
+                    try
+                    {
+                        string readyState = javascript
+                        .ExecuteScript("if (document.readyState) return document.readyState;").ToString();
+
+                        return readyState.ToLower() == "complete";
+                    }
+                    catch (InvalidOperationException e)
+                    {
+                        //Window is no longer available
+                        return e.Message.ToLower().Contains("Unable to get the Browser");
+                    }
+                    catch (WebDriverException e)
+                    {
+                        //Browser is no longer available
+                        return e.Message.ToLower().Contains("Unable to Connect");
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
+                });
+            }
+            catch
+            {
+                //No need to log
+            }
+        }
+
     }
 }
