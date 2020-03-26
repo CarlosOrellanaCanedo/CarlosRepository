@@ -4,6 +4,7 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.ObjectModel;
+using Utilities.ExceptionMethods;
 
 namespace BlazorFramework.Controls
 {
@@ -12,7 +13,7 @@ namespace BlazorFramework.Controls
 
         /// <summary>Gets the get instance.</summary>
         /// <value>The get instance.</value>
-        public static Browser.BrowserManager GetInstance
+        public static BrowserManager GetInstance
         {
             get
             {
@@ -51,6 +52,55 @@ namespace BlazorFramework.Controls
 
                 return null;
             }
+        }
+
+        public static IWebElement FindElementWait(this IWebDriver driver, By locator,
+             string controlName)
+        {
+            try
+            {
+                var element = GetWaitDriver.Until(d => d.FindElement(locator));
+                string message = $"Element: [ {controlName} ] found.";
+
+                return element;
+            }
+            catch (NoSuchElementException)
+            {
+                string message = $"Unable to find the following element: [ {locator} ] [ {controlName} ]";
+                throw new NoSuchElementException(message);
+            }
+            catch (Exception e)
+            {
+                var errorMessage = $"[ {e.Message} ]. Control not found: [ {locator} ] [ {controlName} ]";
+                throw new Exception(errorMessage);
+            }
+        }
+
+        public static IWebElement FindElementWait(this IWebElement webElement, By locator,
+            string controlName)
+        {
+            try
+            {
+                var element = SeleniumActions.GetWaitDriver.Until(d => d.FindElement(locator));
+                string message = $"Element: [ {controlName} ] found.";
+
+                return element;
+            }
+            catch (NoSuchElementException)
+            {
+                string message = $"Unable to find the following element: [ {locator} ] [ {controlName} ]";
+                throw new NoSuchElementException(message);
+            }
+            catch (Exception e)
+            {
+                var errorMessage = $"[ {e.Message} ]. Control not found: [ {locator} ] [ {controlName} ]";
+                throw new Exception(errorMessage);
+            }
+        }
+
+        public static IWebElement GetElementWait(By by, string controlName = "")
+        {
+            return GetWebDriver.FindElementWait(by, controlName);
         }
 
         public static Actions Action => new Actions(GetWebDriver);

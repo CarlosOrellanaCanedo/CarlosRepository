@@ -51,8 +51,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessToProjects\CommonNavigator.cs" />
+    <Compile Include="AccessToProjects\INavigationModules.cs" />
+    <Compile Include="AccessToProjects\LeftMenu\ILeftMenuPage.cs" />
+    <Compile Include="AccessToProjects\LeftMenu\LeftMenuPage.cs" />
+    <Compile Include="AccessToProjects\NavigationManager.cs" />
     <Compile Include="DashboardModule\DashboardPage.cs" />
-    <Compile Include="Login\LoginPage.cs" />
+    <Compile Include="DashboardModule\Dasboard.cs" />
+    <Compile Include="IssuesModule\Issues.cs" />
+    <Compile Include="IssuesModule\IssuesPage.cs" />
+    <Compile Include="LoginModule\SingOut.cs" />
+    <Compile Include="LoginModule\LoginPage.cs" />
     <Compile Include="MyProfileModule\MyProfile.cs" />
     <Compile Include="MyProfileModule\MyProfilePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

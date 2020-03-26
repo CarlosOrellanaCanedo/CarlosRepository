@@ -7,6 +7,17 @@ namespace Pages.DashboardModule
 {
     public class DashboardPage
     {
+        public DashboardPage IsStatisticsDisplayed()
+        {
+            SeleniumActions.WaitForPageToLoad();
+            
+            string xpath = "//span[@class='small text-uppercase text-muted d-block' and text()='Statistics']";
+            SeleniumActions.GetWaitDriver.
+                    Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(xpath)));
+            ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath, "Statistics").IsDisplayed();
+            return this;
+        }
+
         public DashboardPage IsDashboarLinkActive()
         {
             ControlFactory.GetControl<HyperLinkElement>(Locator.XPath, "//a[@class='nav-link active active']", "DashBoard").IsDisplayed();

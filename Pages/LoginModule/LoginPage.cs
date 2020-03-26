@@ -1,14 +1,21 @@
 ﻿using BlazorFramework.Controls;
 using BlazorFramework.Factories;
+using OpenQA.Selenium;
 using Pages.DashboardModule;
 
-namespace Pages
+namespace Pages.LoginModule
 {
     public class LoginPage
     {
-        public LoginPage()
+        public LoginPage IsLoginPage()
         {
-            //SeleniumActions.ValidateUrlPage("https://demos.telerik.com/blazor-dashboard-app/signin");
+            SeleniumActions.WaitForPageToLoad();
+
+            string xpath = "//div[@class='signin-form p-5']/child::h1[@id='app-title' and text()='ISSUES']";
+            SeleniumActions.GetWaitDriver.
+                    Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(xpath)));
+            ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath, "ISSUES").IsDisplayed();
+            return this;
         }
 
         public LoginPage SetEmailOrUserName(string value)

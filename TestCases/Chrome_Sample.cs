@@ -1,5 +1,8 @@
 ﻿using NUnit.Framework;
-using Pages;
+using Pages.DashboardModule;
+using Pages.IssuesModule;
+using Pages.LoginModule;
+using Pages.MyProfileModule;
 using TestCases.Base;
 
 namespace TestCases
@@ -35,6 +38,29 @@ namespace TestCases
                 .ValidateDataInterval("1 Month")
                 .SelectDataInterval("2 Weeks")
                 .ValidateDataInterval("2 Weeks");
+        }
+
+        [Test]
+        public void TestNavigationToMyProfilePage()
+        {
+            new LoginPage()
+                .SetEmailOrUserName("carlos.orellanacanedo@outlook.com")
+                .SetPassword("control123")
+                .ValidateLoginButton()
+                .ClickLoginButton();
+
+            MyProfile.GoTo()
+                .IsAccountDisplayed();
+
+            Dashboard.GoTo()
+                .IsStatisticsDisplayed();
+
+            Issues.GoTo()
+                .IsTableTitleDisplayed();
+
+            SingOut.GoTo()
+                .IsLoginPage();
+
         }
     }
 }

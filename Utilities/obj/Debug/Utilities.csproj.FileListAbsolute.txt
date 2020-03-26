@@ -5,6 +5,7 @@ D:\JalasoftRepository\Utilities\obj\Debug\Utilities.dll
 D:\JalasoftRepository\Utilities\obj\Debug\Utilities.pdb
 D:\AllFolders\JalasoftRepository\Utilities\bin\Debug\Utilities.dll
 D:\AllFolders\JalasoftRepository\Utilities\bin\Debug\Utilities.pdb
+D:\AllFolders\JalasoftRepository\Utilities\obj\Debug\Utilities.csprojAssemblyReference.cache
 D:\AllFolders\JalasoftRepository\Utilities\obj\Debug\Utilities.csproj.CoreCompileInputs.cache
 D:\AllFolders\JalasoftRepository\Utilities\obj\Debug\Utilities.dll
 D:\AllFolders\JalasoftRepository\Utilities\obj\Debug\Utilities.pdb

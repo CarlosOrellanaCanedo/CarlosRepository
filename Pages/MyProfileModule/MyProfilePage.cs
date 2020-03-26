@@ -1,11 +1,22 @@
 ﻿using BlazorFramework.Controls;
 using BlazorFramework.Factories;
+using OpenQA.Selenium;
 using System;
 
 namespace Pages.MyProfileModule
 {
     public class MyProfilePage
     {
+
+        public MyProfilePage IsAccountDisplayed()
+        {
+            SeleniumActions.WaitForPageToLoad();
+            string xpath = "//span[@class='small text-uppercase text-muted d-block' and text()='Account']";
+            SeleniumActions.GetWaitDriver.
+                    Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(xpath)));
+            ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath, "Account").IsDisplayed();
+            return this;
+        }
         public MyProfilePage SetUserName(string value)
         {
             string xpath = "//label[@class='k-label' and text()='User Name']";
