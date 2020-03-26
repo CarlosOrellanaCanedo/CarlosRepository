@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\BlazorFramework\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -48,8 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DashboardPage.cs" />
-    <Compile Include="LoginPage.cs" />
+    <Compile Include="DashboardModule\DashboardPage.cs" />
+    <Compile Include="Login\LoginPage.cs" />
+    <Compile Include="MyProfileModule\MyProfile.cs" />
+    <Compile Include="MyProfileModule\MyProfilePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,5 +66,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

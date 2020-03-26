@@ -1,5 +1,6 @@
 ﻿using BlazorFramework.Controls;
 using BlazorFramework.Factories;
+using Pages.DashboardModule;
 
 namespace Pages
 {

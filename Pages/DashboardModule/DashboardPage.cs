@@ -1,11 +1,9 @@
 ﻿using BlazorFramework.Controls;
 using BlazorFramework.Factories;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using System;
-using System.Threading;
 
-namespace Pages
+namespace Pages.DashboardModule
 {
     public class DashboardPage
     {
@@ -24,8 +22,10 @@ namespace Pages
         public DashboardPage SelectDataInterval(string value)
         {
             string xpath = "//span[@aria-haspopup='listbox' and starts-with(@class,'k-widget k-dropdown k-header')]";
+            
             string xpathSelect = $"//div[@class='telerik-blazor k-animation-container ']/child::div[@class='k-popup k-reset']" +
                 $"/child::div[@class='k-list-scroller']/child::ul[@class='k-list k-reset']/child::li[contains(.,'{value}')]";
+            
             ControlFactory.GetControl<ButtonElement>(Locator.XPath, xpath,
                 "Data Interval").Click();
 
@@ -36,13 +36,13 @@ namespace Pages
             int count = 0;
             while (!expanded || count == 5)
             {
-                attribute = ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath,
-                    "Data Interval", PostAction.Sleep).GetAttribute("aria-expanded");
-
                 if (attribute.ToLower().Trim().Equals("false"))
                 {
                     ControlFactory.GetControl<ButtonElement>(Locator.XPath, xpath,
                                                 "Data Interval").Click();
+
+                    attribute = ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath,
+                    "Data Interval", PostAction.Sleep).GetAttribute("aria-expanded");
                 }
                 else
                 {
@@ -50,18 +50,27 @@ namespace Pages
                 }
                 try
                 {
-                    SeleniumActions.GetWaitDriver.Until(ExpectedConditions.ElementToBeClickable(By.XPath(xpathSelect)));
+                    SeleniumActions.GetWaitDriver.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(xpathSelect)));
                 }
                 catch(Exception)
                 {
-                   
+                   //pending Loger
                 }
                
                 count++;
             }
 
-            
-            ControlFactory.GetControl<SpanElement>(Locator.XPath, xpathSelect, value, PostAction.WaitForPageToLoad).Click();
+            try
+            {
+                SeleniumActions.GetWaitDriver.
+                    Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath(xpathSelect)));
+            }
+            catch (Exception)
+            {
+                //pending Loger
+            }
+
+            ControlFactory.GetControl<SpanElement>(Locator.XPath, xpathSelect, value, PostAction.Sleep).Click();
             SeleniumActions.WaitForPageToLoad();
             return this;
         }
@@ -69,7 +78,22 @@ namespace Pages
         public DashboardPage ValidateDataInterval(string value)
         {
             string xpath = "//span[@aria-haspopup='listbox' and starts-with(@class,'k-widget k-dropdown k-header')]";
-            ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath, "Data Interval").ValidateSpan(value);
+
+            string attribute = ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath,
+                    "Data Interval", PostAction.Sleep).GetAttribute("aria-describedby");
+
+            try
+            {
+                SeleniumActions.GetWaitDriver
+                    .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.
+                    TextToBePresentInElement(SeleniumActions.GetElement(By.Id(attribute)), value));
+            }
+            catch (Exception)
+            {
+                //pending Loger
+            }
+
+            ControlFactory.GetControl<SpanElement>(Locator.Id, attribute, "Data Interval").ValidateSpan(value);
             return this;
         }
     }

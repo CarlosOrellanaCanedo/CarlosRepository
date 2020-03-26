@@ -80,7 +80,7 @@ namespace BlazorFramework.Controls
 
             Func<IWebElement> secondAttempt = () =>
             {
-                return SeleniumActions.GetWaitDriver.Until(ExpectedConditions.ElementToBeClickable(_locator));
+                return SeleniumActions.GetWaitDriver.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(_locator));
             };
 
             string errorMessage;

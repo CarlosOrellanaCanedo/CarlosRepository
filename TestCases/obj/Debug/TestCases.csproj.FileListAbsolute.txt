@@ -38,6 +38,7 @@ D:\AllFolders\JalasoftRepository\TestCases\bin\Debug\Pages.dll
 D:\AllFolders\JalasoftRepository\TestCases\bin\Debug\Utilities.dll
 D:\AllFolders\JalasoftRepository\TestCases\bin\Debug\WebDriver.Support.dll
 D:\AllFolders\JalasoftRepository\TestCases\bin\Debug\WebDriver.dll
+D:\AllFolders\JalasoftRepository\TestCases\bin\Debug\SeleniumExtras.WaitHelpers.dll
 D:\AllFolders\JalasoftRepository\TestCases\bin\Debug\BlazorFramework.pdb
 D:\AllFolders\JalasoftRepository\TestCases\bin\Debug\Pages.pdb
 D:\AllFolders\JalasoftRepository\TestCases\bin\Debug\nunit.framework.pdb

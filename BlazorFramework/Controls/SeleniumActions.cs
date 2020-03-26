@@ -155,7 +155,7 @@ namespace BlazorFramework.Controls
         {
             //Doing a MouseHover  
             WebDriverWait wait = new WebDriverWait(GetWebDriver, TimeSpan.FromSeconds(10));
-            var element = wait.Until(ExpectedConditions.ElementIsVisible(By.XPath(PrimaryMenu)));
+            var element = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath(PrimaryMenu)));
             Actions action = new Actions(GetWebDriver);
             action.MoveToElement(element).Perform();
             //Clicking the SubMenu on MouseHover   
