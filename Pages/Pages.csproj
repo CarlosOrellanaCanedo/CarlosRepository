@@ -62,8 +62,10 @@
     <Compile Include="IssuesModule\IssuesPage.cs" />
     <Compile Include="LoginModule\SingOut.cs" />
     <Compile Include="LoginModule\LoginPage.cs" />
+    <Compile Include="MyProfileModule\DeletePopup.cs" />
     <Compile Include="MyProfileModule\MyProfile.cs" />
     <Compile Include="MyProfileModule\MyProfilePage.cs" />
+    <Compile Include="MyProfileModule\UpdatePopup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

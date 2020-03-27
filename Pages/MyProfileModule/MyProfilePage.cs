@@ -1,6 +1,7 @@
 ﻿using BlazorFramework.Controls;
 using BlazorFramework.Factories;
 using OpenQA.Selenium;
+using Pages.LoginModule;
 using System;
 
 namespace Pages.MyProfileModule
@@ -44,6 +45,18 @@ namespace Pages.MyProfileModule
             return this;
         }
 
+        public MyProfilePage IsAnEmailIsRequiredMessageDisplayed()
+        {
+            string xpath = "//button[@class='k-button telerik-blazor k-primary' and text()='Update profile']";
+            ControlFactory.GetControl<ButtonElement>(Locator.XPath, xpath, "Update Profile").Click();
+
+            xpath = "validation-message";
+
+            ControlFactory.GetControl<SpanElement>(Locator.ClassName, xpath, "An email is required")
+                .ValidateSpanContains("An email is required");
+            return this;
+        }
+
         public MyProfilePage CheckKeepMyEmailAddressprivate()
         {
             string xpath = "//label[@class='k-label' and text()='Email']";
@@ -73,18 +86,25 @@ namespace Pages.MyProfileModule
             return this;
         }
 
-        public MyProfilePage ClickUpdateProfile()
+        public FromMyProfileTo ClickUpdateProfile()
         {
             string xpath = "//button[@class='k-button telerik-blazor k-primary' and text()='Update profile']";
             ControlFactory.GetControl<ButtonElement>(Locator.XPath, xpath, "Update Profile").Click();
-            return this;
+            return new FromMyProfileTo();
         }
 
-        public MyProfilePage ClickDeleteAccount()
+        public FromMyProfileTo ClickDeleteAccount()
         {
             string xpath = "//button[@class='dangerButton k-button telerik-blazor' and text()='Delete Account']";
-            ControlFactory.GetControl<ButtonElement>(Locator.XPath, xpath, "Update Profile").Click();
-            return this;
+            ControlFactory.GetControl<ButtonElement>(Locator.XPath, xpath, "Delete Account").Click();
+            
+            return new FromMyProfileTo();
         }
+    }
+
+    public class FromMyProfileTo
+    {
+        public DeletePopup GoToDeleteAccountPopup() => new DeletePopup();
+        public UpdatePopup GoToUpdateAccountPopup() => new UpdatePopup();
     }
 }

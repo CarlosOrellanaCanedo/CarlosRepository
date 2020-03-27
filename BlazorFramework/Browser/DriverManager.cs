@@ -15,7 +15,12 @@ namespace BlazorFramework.Browser
             switch (driverVersion)
             {
                 case "Chrome":
-                    instance = ChromeDriverMethod();
+                    var chromeOptions = new ChromeOptions();
+                    chromeOptions.AddArguments("--disable-infobars");
+                    chromeOptions.AddArguments("--start-maximized");
+
+                    instance = new ChromeDriver(DriverUtils.Path, chromeOptions, TimeSpan.FromMinutes(2));
+
                     break;
 
                 default:

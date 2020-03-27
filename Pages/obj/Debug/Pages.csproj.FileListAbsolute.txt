@@ -14,6 +14,7 @@ D:\JalasoftRepository\Pages\obj\Debug\Pages.csproj.CopyComplete
 D:\JalasoftRepository\Pages\obj\Debug\Pages.dll
 D:\JalasoftRepository\Pages\obj\Debug\Pages.pdb
 D:\JalasoftRepository\Pages\bin\Debug\Drivers\chromedriver.exe
+D:\AllFolders\JalasoftRepository\Pages\obj\Debug\Pages.csproj.CoreCompileInputs.cache
 D:\AllFolders\JalasoftRepository\Pages\bin\Debug\Drivers\chromedriver.exe
 D:\AllFolders\JalasoftRepository\Pages\bin\Debug\Pages.dll
 D:\AllFolders\JalasoftRepository\Pages\bin\Debug\Pages.pdb
@@ -27,7 +28,6 @@ D:\AllFolders\JalasoftRepository\Pages\bin\Debug\WebDriver.xml
 D:\AllFolders\JalasoftRepository\Pages\bin\Debug\WebDriver.Support.xml
 D:\AllFolders\JalasoftRepository\Pages\bin\Debug\Utilities.pdb
 D:\AllFolders\JalasoftRepository\Pages\obj\Debug\Pages.csprojAssemblyReference.cache
-D:\AllFolders\JalasoftRepository\Pages\obj\Debug\Pages.csproj.CoreCompileInputs.cache
 D:\AllFolders\JalasoftRepository\Pages\obj\Debug\Pages.csproj.CopyComplete
 D:\AllFolders\JalasoftRepository\Pages\obj\Debug\Pages.dll
 D:\AllFolders\JalasoftRepository\Pages\obj\Debug\Pages.pdb

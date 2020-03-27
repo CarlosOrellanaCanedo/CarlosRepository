@@ -4,6 +4,7 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading;
 using Utilities.ExceptionMethods;
 
 namespace BlazorFramework.Controls
@@ -54,50 +55,6 @@ namespace BlazorFramework.Controls
             }
         }
 
-        public static IWebElement FindElementWait(this IWebDriver driver, By locator,
-             string controlName)
-        {
-            try
-            {
-                var element = GetWaitDriver.Until(d => d.FindElement(locator));
-                string message = $"Element: [ {controlName} ] found.";
-
-                return element;
-            }
-            catch (NoSuchElementException)
-            {
-                string message = $"Unable to find the following element: [ {locator} ] [ {controlName} ]";
-                throw new NoSuchElementException(message);
-            }
-            catch (Exception e)
-            {
-                var errorMessage = $"[ {e.Message} ]. Control not found: [ {locator} ] [ {controlName} ]";
-                throw new Exception(errorMessage);
-            }
-        }
-
-        public static IWebElement FindElementWait(this IWebElement webElement, By locator,
-            string controlName)
-        {
-            try
-            {
-                var element = SeleniumActions.GetWaitDriver.Until(d => d.FindElement(locator));
-                string message = $"Element: [ {controlName} ] found.";
-
-                return element;
-            }
-            catch (NoSuchElementException)
-            {
-                string message = $"Unable to find the following element: [ {locator} ] [ {controlName} ]";
-                throw new NoSuchElementException(message);
-            }
-            catch (Exception e)
-            {
-                var errorMessage = $"[ {e.Message} ]. Control not found: [ {locator} ] [ {controlName} ]";
-                throw new Exception(errorMessage);
-            }
-        }
-
         public static IWebElement GetElementWait(By by, string controlName = "")
         {
             return GetWebDriver.FindElementWait(by, controlName);
@@ -105,11 +62,6 @@ namespace BlazorFramework.Controls
 
         public static Actions Action => new Actions(GetWebDriver);
 
-        /// <summary>Gets the element.</summary>
-        /// <param name="by">The by.</param>
-        /// <param name="controlName"></param>
-        /// <returns></returns>
-        /// <exception cref="System.Exception">Control not found:  + by</exception>
         public static IWebElement GetElement(By by, string controlName = "") //TODO add controlName
         {
             try
@@ -256,5 +208,75 @@ namespace BlazorFramework.Controls
             }
         }
 
+        private static void WaitForAlert(IWebDriver driver)
+        {
+            int i = 0;
+            while (i < 15)
+            {
+                try
+                {
+                    driver.SwitchTo().Alert();
+                    BrowserSleep();
+                    break;
+                }
+                catch (NoAlertPresentException)
+                {
+                    Thread.Sleep(100);
+                }
+                i++;
+            }
+        }
+
+        public static void BrowserSleep(int sleepTime = 1)
+        {
+            GetWebDriver.Sleep(sleepTime);
+        }
+
+        public static void HandlerModalDialogs()
+        {
+            try
+            {
+                WaitForAlert(GetWebDriver);
+
+                var alert = GetWebDriver.SwitchTo().Alert();
+                alert.Accept();
+
+                BrowserSleep();
+                WaitForPageToLoad();
+            }
+            catch (Exception)
+            {
+                SwitchToDefaultContent();
+            }
+        }
+
+        public static void HandlerModalDialogsAndValidateText(string expectedMessage)
+        {
+            try
+            {
+                WaitForAlert(GetWebDriver);
+
+                var alert = GetWebDriver.SwitchTo().Alert();
+                var alertMessage = alert.Text;
+
+                var messageFailed =
+                "The information message in Handler Modal dialog is not the expected [" + expectedMessage + "].";
+                var messagePassed =
+                "The information message in Handler Modal dialog is correct.";
+                ExceptionManager.AssertAreEqual(alertMessage, expectedMessage, messagePassed, messageFailed);
+
+                alert.Accept();
+                BrowserSleep();
+            }
+            catch (Exception)
+            {
+                SwitchToDefaultContent();
+            }
+        }
+
+        public static void SwitchToDefaultContent()
+        {
+            GetWebDriver.SwitchTo().DefaultContent();
+        }
     }
 }

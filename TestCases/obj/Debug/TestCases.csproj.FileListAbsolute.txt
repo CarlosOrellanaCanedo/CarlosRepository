@@ -24,6 +24,7 @@ D:\JalasoftRepository\TestCases\obj\Debug\TestCases.dll
 D:\JalasoftRepository\TestCases\obj\Debug\TestCases.pdb
 D:\JalasoftRepository\TestCases\bin\Debug\Drivers\chromedriver.exe
 D:\JalasoftRepository\TestCases\bin\Debug\TestCases.dll.config
+D:\AllFolders\JalasoftRepository\TestCases\obj\Debug\TestCases.csproj.CoreCompileInputs.cache
 D:\AllFolders\JalasoftRepository\TestCases\bin\Debug\NUnit3.TestAdapter.dll
 D:\AllFolders\JalasoftRepository\TestCases\bin\Debug\NUnit3.TestAdapter.pdb
 D:\AllFolders\JalasoftRepository\TestCases\bin\Debug\nunit.engine.dll
@@ -47,7 +48,6 @@ D:\AllFolders\JalasoftRepository\TestCases\bin\Debug\Utilities.pdb
 D:\AllFolders\JalasoftRepository\TestCases\bin\Debug\WebDriver.Support.xml
 D:\AllFolders\JalasoftRepository\TestCases\bin\Debug\WebDriver.xml
 D:\AllFolders\JalasoftRepository\TestCases\obj\Debug\TestCases.csprojAssemblyReference.cache
-D:\AllFolders\JalasoftRepository\TestCases\obj\Debug\TestCases.csproj.CoreCompileInputs.cache
 D:\AllFolders\JalasoftRepository\TestCases\obj\Debug\TestCases.csproj.CopyComplete
 D:\AllFolders\JalasoftRepository\TestCases\obj\Debug\TestCases.dll
 D:\AllFolders\JalasoftRepository\TestCases\obj\Debug\TestCases.pdb

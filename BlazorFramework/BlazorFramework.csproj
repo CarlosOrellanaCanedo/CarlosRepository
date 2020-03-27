@@ -63,6 +63,7 @@
     <Compile Include="Controls\DropDownListElement.cs" />
     <Compile Include="Controls\HyperLinkElement.cs" />
     <Compile Include="Controls\SeleniumActions.cs" />
+    <Compile Include="Controls\SeleniumExtension.cs" />
     <Compile Include="Controls\SpanElement.cs" />
     <Compile Include="Controls\TextFieldElement.cs" />
     <Compile Include="Controls\WebElementBase.cs" />

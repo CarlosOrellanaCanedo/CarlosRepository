@@ -2,6 +2,7 @@
 using BlazorFramework.Factories;
 using OpenQA.Selenium;
 using Pages.DashboardModule;
+using Pages.MyProfileModule;
 
 namespace Pages.LoginModule
 {
