@@ -11,7 +11,7 @@ namespace TestCases
     class Chrome_Sample : BaseTestCase
     {
         [Test]
-        public void TestLogin()
+        public void TestLoginValidAccount()
         {
             new LoginPage()
                 .SetEmailOrUserName("carlos.orellanacanedo@outlook.com")
@@ -24,7 +24,7 @@ namespace TestCases
         }
 
         [Test]
-        public void TestDasboardDataIntervalDropDownList()
+        public void TestDasboardChangeDataInterval()
         {
             new LoginPage()
                 .SetEmailOrUserName("carlos.orellanacanedo@outlook.com")
