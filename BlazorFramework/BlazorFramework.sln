@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pages", "..\Pages\Pages.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCases", "..\TestCases\TestCases.csproj", "{1659B8E5-BA89-45A3-8A87-51AE2DB5BC7B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSpeckflowTests", "..\BlazorSpeckflowTests\BlazorSpeckflowTests.csproj", "{DD4D8735-4BDF-4861-A9B1-287299E8CF6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1659B8E5-BA89-45A3-8A87-51AE2DB5BC7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1659B8E5-BA89-45A3-8A87-51AE2DB5BC7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1659B8E5-BA89-45A3-8A87-51AE2DB5BC7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD4D8735-4BDF-4861-A9B1-287299E8CF6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD4D8735-4BDF-4861-A9B1-287299E8CF6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD4D8735-4BDF-4861-A9B1-287299E8CF6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD4D8735-4BDF-4861-A9B1-287299E8CF6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

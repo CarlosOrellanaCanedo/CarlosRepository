@@ -57,7 +57,7 @@
     <Compile Include="AccessToProjects\LeftMenu\LeftMenuPage.cs" />
     <Compile Include="AccessToProjects\NavigationManager.cs" />
     <Compile Include="DashboardModule\DashboardPage.cs" />
-    <Compile Include="DashboardModule\Dasboard.cs" />
+    <Compile Include="DashboardModule\Dashboard.cs" />
     <Compile Include="IssuesModule\Issues.cs" />
     <Compile Include="IssuesModule\IssuesPage.cs" />
     <Compile Include="LoginModule\SingOut.cs" />

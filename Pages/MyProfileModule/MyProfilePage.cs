@@ -1,7 +1,6 @@
 ﻿using BlazorFramework.Controls;
 using BlazorFramework.Factories;
 using OpenQA.Selenium;
-using Pages.LoginModule;
 using System;
 
 namespace Pages.MyProfileModule
