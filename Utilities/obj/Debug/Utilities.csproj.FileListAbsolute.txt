@@ -3,3 +3,9 @@ D:\JalasoftRepository\Utilities\bin\Debug\Utilities.pdb
 D:\JalasoftRepository\Utilities\obj\Debug\Utilities.csproj.CoreCompileInputs.cache
 D:\JalasoftRepository\Utilities\obj\Debug\Utilities.dll
 D:\JalasoftRepository\Utilities\obj\Debug\Utilities.pdb
+C:\POCs\CarlosRepository\Utilities\bin\Debug\Utilities.dll
+C:\POCs\CarlosRepository\Utilities\bin\Debug\Utilities.pdb
+C:\POCs\CarlosRepository\Utilities\obj\Debug\Utilities.csprojAssemblyReference.cache
+C:\POCs\CarlosRepository\Utilities\obj\Debug\Utilities.csproj.CoreCompileInputs.cache
+C:\POCs\CarlosRepository\Utilities\obj\Debug\Utilities.dll
+C:\POCs\CarlosRepository\Utilities\obj\Debug\Utilities.pdb

@@ -1,8 +1,8 @@
-﻿Feature: Feature1
+﻿Feature: LoginTestCase
 
-A short summary of the feature
 
-@tag1
-Scenario: Login Testing
+@mytag
+Scenario: Login Blazor Page
+	Given Login Blazor web page
 	When go to Dashboard page
 	Then in the Dashboard page, validate Statistics text is displayed

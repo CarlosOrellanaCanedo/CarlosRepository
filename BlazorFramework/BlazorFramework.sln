@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29911.98
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorFramework", "BlazorFramework.csproj", "{BCACCE7C-0AEF-4671-A103-8F02522FEAA7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "..\Utilities\Utilities.csproj", "{257BAAB1-12BE-4A4A-B222-CCB404B460EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorUtilities", "..\Utilities\BlazorUtilities.csproj", "{257BAAB1-12BE-4A4A-B222-CCB404B460EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pages", "..\Pages\Pages.csproj", "{FE2C0661-2B0F-4130-9B97-328DA87067F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorPages", "..\Pages\BlazorPages.csproj", "{FE2C0661-2B0F-4130-9B97-328DA87067F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCases", "..\TestCases\TestCases.csproj", "{1659B8E5-BA89-45A3-8A87-51AE2DB5BC7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorTestCases", "..\TestCases\BlazorTestCases.csproj", "{1659B8E5-BA89-45A3-8A87-51AE2DB5BC7B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSpeckflowTests", "..\BlazorSpeckflowTests\BlazorSpeckflowTests.csproj", "{DD4D8735-4BDF-4861-A9B1-287299E8CF6C}"
 EndProject

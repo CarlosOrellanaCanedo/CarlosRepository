@@ -2,6 +2,7 @@
 using BlazorFramework.Factories;
 using OpenQA.Selenium;
 using System;
+using System.Collections.Generic;
 
 namespace Pages.MyProfileModule
 {
@@ -98,6 +99,29 @@ namespace Pages.MyProfileModule
             ControlFactory.GetControl<ButtonElement>(Locator.XPath, xpath, "Delete Account").Click();
             
             return new FromMyProfileTo();
+        }
+        public Dictionary<string, string> DataTable { get; set; }
+
+        public void processMyProfileForm()
+        {
+            foreach(KeyValuePair<string, string> entry in DataTable)
+            {
+                processTableData(entry.Key, entry.Value);
+            }
+        }
+
+        private MyProfilePage processTableData(string option, string value)
+        {
+            switch(option)
+            {
+                case "user name": SetUserName(value); break;
+                case "real name": SetRealName(value); break;
+                case "email": SetEmail(value); break;
+                case "company": SetCompany(value); break;
+                case "location": SetLocation(value); break;
+                
+            }
+            return this;
         }
     }
 

@@ -8,13 +8,13 @@ using TestCases.Base;
 namespace TestCases
 {
     [TestFixture]
-    class Chrome_Sample : BaseTestCase
+    class AcceptanceTestCases : BaseTestCase
     {
         [Test]
         public void TestLoginValidAccount()
         {
             new LoginPage()
-                .SetEmailOrUserName("carlos.orellanacanedo@outlook.com")
+                .SetEmailOrUserName("carlos@outlook.com")
                 .SetPassword("control123")
                 .ValidateLoginButton()
                 .ClickLoginButton()
@@ -27,7 +27,7 @@ namespace TestCases
         public void TestDasboardChangeDataInterval()
         {
             new LoginPage()
-                .SetEmailOrUserName("carlos.orellanacanedo@outlook.com")
+                .SetEmailOrUserName("carlos@outlook.com")
                 .SetPassword("control123")
                 .ValidateLoginButton()
                 .ClickLoginButton()
@@ -44,7 +44,7 @@ namespace TestCases
         public void TestNavigationToMyProfilePage()
         {
             new LoginPage()
-                .SetEmailOrUserName("carlos.orellanacanedo@outlook.com")
+                .SetEmailOrUserName("carlos@outlook.com")
                 .SetPassword("control123")
                 .ValidateLoginButton()
                 .ClickLoginButton();

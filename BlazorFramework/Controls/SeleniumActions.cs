@@ -5,7 +5,7 @@ using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading;
-using Utilities.ExceptionMethods;
+using BlazorUtilities.ExceptionMethods;
 
 namespace BlazorFramework.Controls
 {

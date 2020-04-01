@@ -1,6 +1,6 @@
 ﻿using BlazorFramework.Browser;
 using System;
-using Utilities.ExceptionMethods;
+using BlazorUtilities.ExceptionMethods;
 
 namespace BlazorFramework.Controls
 {

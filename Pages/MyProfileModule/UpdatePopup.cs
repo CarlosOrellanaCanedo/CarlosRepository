@@ -5,7 +5,7 @@ namespace Pages.MyProfileModule
 {
     public class UpdatePopup
     {
-        private string xpathBase;
+        private readonly string xpathBase;
         public UpdatePopup()
         {
             SeleniumActions.GetWebDriver.SwitchTo().ActiveElement();

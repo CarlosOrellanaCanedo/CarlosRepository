@@ -1,7 +1,8 @@
-using Pages.DashboardModule;
+﻿using Pages.DashboardModule;
+using System;
 using TechTalk.SpecFlow;
 
-namespace BlazorSpecFlowTest.Steps.DashboardSteps
+namespace BlazorSpeckflowTests
 {
     [Binding]
     public class DashboardPageSteps
@@ -19,7 +20,7 @@ namespace BlazorSpecFlowTest.Steps.DashboardSteps
         {
             Dashboard.GoTo();
         }
-
+        
         [Then(@"in the Dashboard page, validate Statistics text is displayed")]
         public void ThenInTheDashboardPageValidateStatisticsTextIsDisplayed()
         {

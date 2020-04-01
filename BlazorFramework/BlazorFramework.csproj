@@ -84,9 +84,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Utilities\Utilities.csproj">
+    <ProjectReference Include="..\Utilities\BlazorUtilities.csproj">
       <Project>{257baab1-12be-4a4a-b222-ccb404b460ec}</Project>
-      <Name>Utilities</Name>
+      <Name>BlazorUtilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

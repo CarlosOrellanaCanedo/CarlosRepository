@@ -95,28 +95,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CommonBase\SpecFlowExtensions.cs" />
     <Compile Include="CommonBase\TestHooks.cs" />
-    <Compile Include="Feature1.feature.cs">
-      <DependentUpon>Feature1.feature</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Feature\Feature1.feature.cs">
-      <DependentUpon>Feature1.feature</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\DashboardSteps\DashboardPageSteps.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Steps\LoginSteps\LoginPageSteps.cs" />
+    <Compile Include="Steps\MyProfileSteps\MyProfilePageSteps.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Feature1.feature">
-      <LastGenOutput>Feature1.feature.cs</LastGenOutput>
-    </None>
-    <None Include="Feature\Feature1.feature">
-      <LastGenOutput>Feature1.feature.cs</LastGenOutput>
-    </None>
+    <None Include="App.config" />
+    <None Include="Feature\TestLoginPage.feature" />
+    <None Include="Feature\TestUpdateProfile.feature" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -124,9 +113,9 @@
       <Project>{bcacce7c-0aef-4671-a103-8f02522feaa7}</Project>
       <Name>BlazorFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Pages\Pages.csproj">
+    <ProjectReference Include="..\Pages\BlazorPages.csproj">
       <Project>{fe2c0661-2b0f-4130-9b97-328da87067f9}</Project>
-      <Name>Pages</Name>
+      <Name>BlazorPages</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

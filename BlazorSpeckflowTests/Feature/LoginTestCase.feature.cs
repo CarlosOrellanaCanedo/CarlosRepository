@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace BlazorSpeckflow.Feature
+namespace BlazorSpeckflowTests.Feature
 {
     using TechTalk.SpecFlow;
     using System;
@@ -19,23 +19,23 @@ namespace BlazorSpeckflow.Feature
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [NUnit.Framework.TestFixtureAttribute(TestName="Feature1")]
-    [NUnit.Framework.DescriptionAttribute("A short summary of the feature")]
-    public partial class Feature1Feature
+    [NUnit.Framework.TestFixtureAttribute(TestName="LoginTestCase")]
+    [NUnit.Framework.DescriptionAttribute("LoginTestCase")]
+    public partial class LoginTestCaseFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "Feature1.feature"
+#line 1 "LoginTestCase.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Feature1", "A short summary of the feature", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "LoginTestCase", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -73,16 +73,16 @@ namespace BlazorSpeckflow.Feature
             testRunner.CollectScenarioErrors();
         }
         
-        [NUnit.Framework.TestCaseAttribute(TestName="Login Testing")]
-        [NUnit.Framework.DescriptionAttribute("Login Testing")]
-        [NUnit.Framework.CategoryAttribute("tag1")]
-        public virtual void LoginTesting()
+        [NUnit.Framework.TestCaseAttribute(TestName="Login Blazor Page")]
+        [NUnit.Framework.DescriptionAttribute("Login Blazor Page")]
+        [NUnit.Framework.CategoryAttribute("mytag")]
+        public virtual void LoginBlazorPage()
         {
             string[] tagsOfScenario = new string[] {
-                    "tag1"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login Testing", null, new string[] {
-                        "tag1"});
-#line 6
+                    "mytag"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login Blazor Page", null, new string[] {
+                        "mytag"});
+#line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -102,6 +102,9 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+#line 6
+ testRunner.Given("Login Blazor web page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
 #line 7
  testRunner.When("go to Dashboard page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden

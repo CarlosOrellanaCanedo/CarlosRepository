@@ -26,7 +26,7 @@ namespace BlazorFramework.Browser
         public void Init()
         {
             Driver = new DriverManager().DriverFactory();
-            WaitDriver = new WebDriverWait(Driver, System.TimeSpan.FromSeconds(DefaultWaitTime));
+            WaitDriver = new WebDriverWait(Driver, TimeSpan.FromSeconds(DefaultWaitTime));
 
             System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
             Driver.Navigate().GoToUrl(Url);
