@@ -1,7 +1,6 @@
 ﻿using BlazorFramework.Controls;
 using BlazorFramework.Factories;
 using OpenQA.Selenium;
-using System;
 using System.Collections.Generic;
 
 namespace Pages.MyProfileModule
@@ -26,7 +25,16 @@ namespace Pages.MyProfileModule
             ControlFactory.GetControl<TextFieldElement>(Locator.Id, attribute, "User Name").SetValue(value);
             return this;
         }
-        public MyProfilePage SetRealName(String value)
+
+        public MyProfilePage ValidateUserName(string value)
+        {
+            string xpath = "//label[@class='k-label' and text()='User Name']";
+            string attribute = ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath,
+                    "User Name", PostAction.Sleep).GetAttribute("for");
+            ControlFactory.GetControl<TextFieldElement>(Locator.Id, attribute, "User Name").ValidateTextFieldValue(value);
+            return this;
+        }
+        public MyProfilePage SetRealName(string value)
         {
             string xpath = "//label[@class='k-label' and text()='Real Name']";
             string attribute = ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath,
@@ -34,14 +42,32 @@ namespace Pages.MyProfileModule
             ControlFactory.GetControl<TextFieldElement>(Locator.Id, attribute, "Real Name").SetValue(value);
             return this;
         }
+        public MyProfilePage ValidateRealName(string value)
+        {
+            string xpath = "//label[@class='k-label' and text()='Real Name']";
+            string attribute = ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath,
+                    "Real Name", PostAction.Sleep).GetAttribute("for");
+            ControlFactory.GetControl<TextFieldElement>(Locator.Id, attribute, "Real Name").ValidateTextFieldValue(value);
+            return this;
+        }
 
-        public MyProfilePage SetEmail(String value)
+        public MyProfilePage SetEmail(string value)
         {
             string xpath = "//label[@class='k-label' and text()='Email']";
             string attribute = ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath,
                     "Email", PostAction.Sleep).GetAttribute("for");
             
             ControlFactory.GetControl<TextFieldElement>(Locator.Id, attribute, "Email").SetValue(value);
+            return this;
+        }
+
+        public MyProfilePage ValidateEmail(string value)
+        {
+            string xpath = "//label[@class='k-label' and text()='Email']";
+            string attribute = ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath,
+                    "Email", PostAction.Sleep).GetAttribute("for");
+
+            ControlFactory.GetControl<TextFieldElement>(Locator.Id, attribute, "Email").ValidateTextFieldValue(value);
             return this;
         }
 
@@ -56,6 +82,14 @@ namespace Pages.MyProfileModule
                 .ValidateSpanContains("An email is required");
             return this;
         }
+        public MyProfilePage IsPleaseProvideValidEmailAddressMessageDisplayed()
+        {
+            string xpath = "validation-message";
+
+            ControlFactory.GetControl<SpanElement>(Locator.ClassName, xpath, "An email is required")
+                .ValidateSpanContains("Please provide a valid email address.");
+            return this;
+        }
 
         public MyProfilePage CheckKeepMyEmailAddressprivate()
         {
@@ -66,7 +100,25 @@ namespace Pages.MyProfileModule
             return this; ;
         }
 
-        public MyProfilePage SetCompany(String value)
+        public MyProfilePage IsCheckedKeepMyEmailAddressprivate()
+        {
+            string xpath = "//label[@class='k-label' and text()='Email']";
+            ControlFactory.GetControl<CheckBoxtElement>(Locator.XPath, xpath,
+                    "Data Interval", PostAction.Sleep).IsChecked();
+
+            return this; ;
+        }
+
+        public MyProfilePage IsUncheckedKeepMyEmailAddressprivate()
+        {
+            string xpath = "//label[@class='k-label' and text()='Email']";
+            ControlFactory.GetControl<CheckBoxtElement>(Locator.XPath, xpath,
+                    "Data Interval", PostAction.Sleep).IsUnchecked();
+
+            return this; ;
+        }
+
+        public MyProfilePage SetCompany(string value)
         {
             string xpath = "//label[@class='k-label' and text()='Company']";
             string attribute = ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath,
@@ -76,13 +128,33 @@ namespace Pages.MyProfileModule
             return this;
         }
 
-        public MyProfilePage SetLocation(String value)
+        public MyProfilePage ValidateCompany(string value)
+        {
+            string xpath = "//label[@class='k-label' and text()='Company']";
+            string attribute = ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath,
+                    "Company", PostAction.Sleep).GetAttribute("for");
+
+            ControlFactory.GetControl<TextFieldElement>(Locator.Id, attribute, "Company").ValidateTextFieldValue(value);
+            return this;
+        }
+
+        public MyProfilePage SetLocation(string value)
         {
             string xpath = "//label[@class='k-label' and text()='Location']";
             string attribute = ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath,
                     "Location", PostAction.Sleep).GetAttribute("for");
 
             ControlFactory.GetControl<TextFieldElement>(Locator.Id, attribute, "Location").SetValue(value);
+            return this;
+        }
+
+        public MyProfilePage ValidateLocation(string value)
+        {
+            string xpath = "//label[@class='k-label' and text()='Location']";
+            string attribute = ControlFactory.GetControl<SpanElement>(Locator.XPath, xpath,
+                    "Location", PostAction.Sleep).GetAttribute("for");
+
+            ControlFactory.GetControl<TextFieldElement>(Locator.Id, attribute, "Location").ValidateTextFieldValue(value);
             return this;
         }
 
@@ -112,7 +184,7 @@ namespace Pages.MyProfileModule
 
         private MyProfilePage processTableData(string option, string value)
         {
-            switch(option)
+            switch(option.ToLower())
             {
                 case "user name": SetUserName(value); break;
                 case "real name": SetRealName(value); break;
@@ -120,6 +192,36 @@ namespace Pages.MyProfileModule
                 case "company": SetCompany(value); break;
                 case "location": SetLocation(value); break;
                 
+            }
+            return this;
+        }
+        public void ValidateMyProfileForm()
+        {
+            foreach (KeyValuePair<string, string> entry in DataTable)
+            {
+                ValidateTableData(entry.Key, entry.Value);
+            }
+        }
+        private MyProfilePage ValidateTableData(string option, string value)
+        {
+            switch (option.ToLower())
+            {
+                case "user name": ValidateUserName(value); break;
+                case "real name": ValidateRealName(value); break;
+                case "email": ValidateEmail(value); break;
+                case "Keep my email address private":
+                    if (value.ToLower().Equals("true"))
+                    {
+                        IsCheckedKeepMyEmailAddressprivate();
+                    }
+                    else
+                    {
+                        IsUncheckedKeepMyEmailAddressprivate();
+                    }
+                    break;
+                case "company": ValidateCompany(value); break;
+                case "location": ValidateLocation(value); break;
+
             }
             return this;
         }

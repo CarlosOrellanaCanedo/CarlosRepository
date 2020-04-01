@@ -85,7 +85,13 @@ namespace TestCases
                 .ClickOk()
 
                 .GoToMyProfilePage()
-                .IsAccountDisplayed();
+                .IsAccountDisplayed()
+                .ValidateUserName("Matt Damon")
+                .ValidateRealName("Carlos Orellana")
+                .ValidateEmail("carlos@outlook.com")
+                .IsCheckedKeepMyEmailAddressprivate()
+                .ValidateCompany("Home")
+                .ValidateLocation("Bol");
         }
 
         [Test]

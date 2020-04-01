@@ -67,6 +67,7 @@ namespace BlazorFramework.Controls
         public void SetValue(string text)
         {
             WebElement.Clear();// clear the text field
+            WebElement.Clear();// clear the text field
             WebElement.SendKeys(text);// set the new value in the text field
 
 
