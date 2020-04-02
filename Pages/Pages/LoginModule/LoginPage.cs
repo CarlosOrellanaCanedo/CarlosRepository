@@ -1,10 +1,9 @@
 ﻿using BlazorFramework.Controls;
 using BlazorFramework.Factories;
+using BlazorPages.Pages.DashboardModule;
 using OpenQA.Selenium;
-using Pages.DashboardModule;
-using Pages.MyProfileModule;
 
-namespace Pages.LoginModule
+namespace BlazorPages.Pages.LoginModule
 {
     public class LoginPage
     {

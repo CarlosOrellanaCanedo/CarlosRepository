@@ -100,11 +100,13 @@
     <Compile Include="Steps\DashboardSteps\DashboardPageSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\LoginSteps\LoginPageSteps.cs" />
+    <Compile Include="Steps\MyProfileSteps\DeletePopupSteps.cs" />
     <Compile Include="Steps\MyProfileSteps\MyProfilePageSteps.cs" />
-    <Compile Include="Steps\MyProfileSteps\UpdatePopup.cs" />
+    <Compile Include="Steps\MyProfileSteps\UpdatePopupSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Feature\TestDashboardPage.feature" />
     <None Include="Feature\TestLoginPage.feature" />
     <None Include="Feature\TestUpdateProfile.feature" />
     <None Include="packages.config" />

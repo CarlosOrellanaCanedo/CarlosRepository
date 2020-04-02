@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
-using Pages.DashboardModule;
-using Pages.IssuesModule;
-using Pages.LoginModule;
-using Pages.MyProfileModule;
+using BlazorPages.Pages.DashboardModule;
+using BlazorPages.Pages.IssuesModule;
+using BlazorPages.Pages.LoginModule;
+using BlazorPages.Pages.MyProfileModule;
 using TestCases.Base;
 
 namespace TestCases

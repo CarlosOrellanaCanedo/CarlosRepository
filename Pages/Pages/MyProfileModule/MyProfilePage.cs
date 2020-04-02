@@ -1,9 +1,10 @@
 ﻿using BlazorFramework.Controls;
 using BlazorFramework.Factories;
+using BlazorPages.Models;
 using OpenQA.Selenium;
 using System.Collections.Generic;
 
-namespace Pages.MyProfileModule
+namespace BlazorPages.Pages.MyProfileModule
 {
     public class MyProfilePage
     {
@@ -86,34 +87,37 @@ namespace Pages.MyProfileModule
         {
             string xpath = "validation-message";
 
-            ControlFactory.GetControl<SpanElement>(Locator.ClassName, xpath, "An email is required")
+            ControlFactory.GetControl<SpanElement>(Locator.ClassName, xpath, "Please provide a valid email address")
                 .ValidateSpanContains("Please provide a valid email address.");
             return this;
         }
 
         public MyProfilePage CheckKeepMyEmailAddressprivate()
         {
-            string xpath = "//label[@class='k-label' and text()='Email']";
+            string xpath = "//label[@class='form-check-label h6' " +
+                "and contains(., 'Keep my email address private')]/child::input[@type='checkbox']";
             ControlFactory.GetControl<CheckBoxtElement>(Locator.XPath, xpath,
-                    "Data Interval", PostAction.Sleep).Check();
+                    "Keep my email address private", PostAction.Sleep).Check();
 
             return this; ;
         }
 
         public MyProfilePage IsCheckedKeepMyEmailAddressprivate()
         {
-            string xpath = "//label[@class='k-label' and text()='Email']";
+            string xpath = "//label[@class='form-check-label h6' and " +
+                "contains(., 'Keep my email address private')]/child::input[@type='checkbox']";
             ControlFactory.GetControl<CheckBoxtElement>(Locator.XPath, xpath,
-                    "Data Interval", PostAction.Sleep).IsChecked();
+                    "Keep my email address private", PostAction.Sleep).IsChecked();
 
             return this; ;
         }
 
         public MyProfilePage IsUncheckedKeepMyEmailAddressprivate()
         {
-            string xpath = "//label[@class='k-label' and text()='Email']";
+            string xpath = "//label[@class='form-check-label h6' " +
+                "and contains(., 'Keep my email address private')]/child::input[@type='checkbox']";
             ControlFactory.GetControl<CheckBoxtElement>(Locator.XPath, xpath,
-                    "Data Interval", PostAction.Sleep).IsUnchecked();
+                    "Keep my email address private", PostAction.Sleep).IsUnchecked();
 
             return this; ;
         }
@@ -174,55 +178,27 @@ namespace Pages.MyProfileModule
         }
         public Dictionary<string, string> DataTable { get; set; }
 
-        public void processMyProfileForm()
+        public MyProfilePage ProcessMyProfileForm(Account account)
         {
-            foreach(KeyValuePair<string, string> entry in DataTable)
-            {
-                processTableData(entry.Key, entry.Value);
-            }
-        }
+            if (account.RealName != "") { SetRealName(account.RealName); };
+            if (account.UserName != "") { SetUserName(account.UserName); };
+            if (account.Email != "") { SetEmail(account.Email); };
+            if (account.Company != "") { SetCompany(account.Company); };
+            if (account.Location != "") { SetLocation(account.Location); };
+            if (account.KeepMyEmailAddressPrivate) { CheckKeepMyEmailAddressprivate(); }
 
-        private MyProfilePage processTableData(string option, string value)
-        {
-            switch(option.ToLower())
-            {
-                case "user name": SetUserName(value); break;
-                case "real name": SetRealName(value); break;
-                case "email": SetEmail(value); break;
-                case "company": SetCompany(value); break;
-                case "location": SetLocation(value); break;
-                
-            }
             return this;
         }
-        public void ValidateMyProfileForm()
+        public MyProfilePage ValidateMyProfileForm(Account account)
         {
-            foreach (KeyValuePair<string, string> entry in DataTable)
-            {
-                ValidateTableData(entry.Key, entry.Value);
-            }
-        }
-        private MyProfilePage ValidateTableData(string option, string value)
-        {
-            switch (option.ToLower())
-            {
-                case "user name": ValidateUserName(value); break;
-                case "real name": ValidateRealName(value); break;
-                case "email": ValidateEmail(value); break;
-                case "Keep my email address private":
-                    if (value.ToLower().Equals("true"))
-                    {
-                        IsCheckedKeepMyEmailAddressprivate();
-                    }
-                    else
-                    {
-                        IsUncheckedKeepMyEmailAddressprivate();
-                    }
-                    break;
-                case "company": ValidateCompany(value); break;
-                case "location": ValidateLocation(value); break;
+            if (account.RealName != "") { ValidateRealName(account.RealName); };
+            if (account.UserName != "") { ValidateUserName(account.UserName); };
+            if (account.Email != "") { ValidateEmail(account.Email); };
+            if (account.Company != "") { ValidateCompany(account.Company); };
+            if (account.Location != "") { ValidateLocation(account.Location); };
+            if (account.KeepMyEmailAddressPrivate) { IsCheckedKeepMyEmailAddressprivate(); }
+            if (account.KeepMyEmailAddressPrivate == false) { IsUncheckedKeepMyEmailAddressprivate(); }
 
-            }
             return this;
         }
     }

@@ -1,7 +1,7 @@
 ﻿using BlazorFramework.Controls;
 using OpenQA.Selenium;
 
-namespace Pages.AccessToProjects.LeftMenu
+namespace BlazorPages.AccessToProjects.LeftMenu
 {
     public class LeftMenuPage : ILeftMenuPage
     {

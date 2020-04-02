@@ -1,7 +1,7 @@
-﻿using Pages.AccessToProjects;
-using Pages.DashboardModule;
+﻿using BlazorPage.Pages.IssuesModule;
+using BlazorPages.AccessToProjects;
 
-namespace Pages.IssuesModule
+namespace BlazorPages.Pages.IssuesModule
 {
     public static class Issues
     {

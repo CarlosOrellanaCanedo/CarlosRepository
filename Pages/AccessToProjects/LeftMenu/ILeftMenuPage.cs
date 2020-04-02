@@ -1,4 +1,4 @@
-﻿namespace Pages.AccessToProjects.LeftMenu
+﻿namespace BlazorPages.AccessToProjects.LeftMenu
 {
     public interface ILeftMenuPage
     {

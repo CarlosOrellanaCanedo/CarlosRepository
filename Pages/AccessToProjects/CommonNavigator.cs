@@ -1,6 +1,6 @@
-﻿using Pages.AccessToProjects.LeftMenu;
+﻿using BlazorPages.AccessToProjects.LeftMenu;
 
-namespace Pages.AccessToProjects
+namespace BlazorPages.AccessToProjects
 {
     public class CommonNavigator : INavigationModules
     {

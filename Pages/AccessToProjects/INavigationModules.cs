@@ -1,4 +1,4 @@
-﻿namespace Pages.AccessToProjects
+﻿namespace BlazorPages.AccessToProjects
 {
     public interface INavigationModules
     {

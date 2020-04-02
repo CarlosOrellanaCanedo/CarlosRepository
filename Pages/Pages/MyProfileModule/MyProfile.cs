@@ -1,12 +1,6 @@
-﻿using OpenQA.Selenium;
-using Pages.AccessToProjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BlazorPages.AccessToProjects;
 
-namespace Pages.MyProfileModule
+namespace BlazorPages.Pages.MyProfileModule
 {
     public static class MyProfile
     {

@@ -56,16 +56,18 @@
     <Compile Include="AccessToProjects\LeftMenu\ILeftMenuPage.cs" />
     <Compile Include="AccessToProjects\LeftMenu\LeftMenuPage.cs" />
     <Compile Include="AccessToProjects\NavigationManager.cs" />
-    <Compile Include="DashboardModule\DashboardPage.cs" />
-    <Compile Include="DashboardModule\Dashboard.cs" />
-    <Compile Include="IssuesModule\Issues.cs" />
-    <Compile Include="IssuesModule\IssuesPage.cs" />
-    <Compile Include="LoginModule\SingOut.cs" />
-    <Compile Include="LoginModule\LoginPage.cs" />
-    <Compile Include="MyProfileModule\DeletePopup.cs" />
-    <Compile Include="MyProfileModule\MyProfile.cs" />
-    <Compile Include="MyProfileModule\MyProfilePage.cs" />
-    <Compile Include="MyProfileModule\UpdatePopup.cs" />
+    <Compile Include="Pages\DashboardModule\DashboardPage.cs" />
+    <Compile Include="Pages\DashboardModule\Dashboard.cs" />
+    <Compile Include="Pages\IssuesModule\Issues.cs" />
+    <Compile Include="Pages\IssuesModule\IssuesPage.cs" />
+    <Compile Include="Pages\LoginModule\SingOut.cs" />
+    <Compile Include="Pages\LoginModule\LoginPage.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="Pages\MyProfileModule\DeletePopup.cs" />
+    <Compile Include="Pages\MyProfileModule\MyProfile.cs" />
+    <Compile Include="Pages\MyProfileModule\MyProfilePage.cs" />
+    <Compile Include="Pages\MyProfileModule\UpdatePopup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

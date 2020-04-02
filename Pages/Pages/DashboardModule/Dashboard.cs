@@ -1,6 +1,6 @@
-﻿using Pages.AccessToProjects;
+﻿using BlazorPages.AccessToProjects;
 
-namespace Pages.DashboardModule
+namespace BlazorPages.Pages.DashboardModule
 {
     public static class Dashboard
     {

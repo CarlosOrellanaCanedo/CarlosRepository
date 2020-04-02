@@ -3,7 +3,7 @@ using BlazorFramework.Factories;
 using OpenQA.Selenium;
 using System;
 
-namespace Pages.DashboardModule
+namespace BlazorPages.Pages.DashboardModule
 {
     public class DashboardPage
     {

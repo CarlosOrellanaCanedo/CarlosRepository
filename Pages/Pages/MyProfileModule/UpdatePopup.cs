@@ -1,17 +1,13 @@
 ﻿using BlazorFramework.Controls;
 using BlazorFramework.Factories;
 
-namespace Pages.MyProfileModule
+namespace BlazorPages.Pages.MyProfileModule
 {
     public class UpdatePopup
     {
-        private readonly string xpathBase;
         public UpdatePopup()
         {
             SeleniumActions.GetWebDriver.SwitchTo().ActiveElement();
-            xpathBase = "//div[@class='k-dialog-wrapper']" +
-                "/child::div[@class='k-widget k-window k-window-wrapper telerik-blazor k-centered  k-window-sm' and @aria-modal='true']";
-
         }
 
         public FromUpdatePopupTo ClickUpdateProfileValidateMessageAlert()

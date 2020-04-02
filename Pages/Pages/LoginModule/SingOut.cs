@@ -1,6 +1,6 @@
-﻿using Pages.AccessToProjects;
+﻿using BlazorPages.AccessToProjects;
 
-namespace Pages.LoginModule
+namespace BlazorPages.Pages.LoginModule
 {
     public static class SingOut
     {

@@ -2,7 +2,7 @@
 using BlazorFramework.Factories;
 using OpenQA.Selenium;
 
-namespace Pages.IssuesModule
+namespace BlazorPage.Pages.IssuesModule
 {
     public class IssuesPage
     {

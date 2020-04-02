@@ -74,17 +74,15 @@ namespace BlazorSpeckflowTests.Feature
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Validate the Please provide a valid email addres message is displayed when it\'s f" +
-            "ield constains an invalid format")]
+        [NUnit.Framework.DescriptionAttribute("Update Account data in the Account page")]
         [NUnit.Framework.CategoryAttribute("mytag")]
-        public virtual void ValidateThePleaseProvideAValidEmailAddresMessageIsDisplayedWhenItsFieldConstainsAnInvalidFormat()
+        public virtual void UpdateAccountDataInTheAccountPage()
         {
             string[] tagsOfScenario = new string[] {
                     "mytag"};
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate the Please provide a valid email addres message is displayed when it\'s f" +
-                    "ield constains an invalid format", null, new string[] {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Update Account data in the Account page", null, new string[] {
                         "mytag"});
-#line 40
+#line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -104,27 +102,230 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 41
+#line 5
  testRunner.Given("Login Blazor web page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 42
+#line 6
   testRunner.And("go to MyProfile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "fields",
-                            "values"});
+                            "UserName",
+                            "RealName",
+                            "Email",
+                            "KeepMyEmailAddressPrivate",
+                            "Company",
+                            "Location"});
                 table1.AddRow(new string[] {
-                            "email",
-                            "ab.df.com"});
-#line 43
+                            "Matt Damon",
+                            "Carlos Orellana",
+                            "Carlos@outlook.com",
+                            "True",
+                            "SoftCompany",
+                            "Home"});
+#line 7
  testRunner.When("in the \'Account\' page, set the following values:", ((string)(null)), table1, "When ");
 #line hidden
-#line 46
+#line 11
   testRunner.And("in the \'Account page, click on [Update] button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 47
+#line 12
+  testRunner.And("in the \'Update\' popup, click on [OK] button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 13
+ testRunner.Then("in the \'Account\' page the \'Account\' span is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "UserName",
+                            "RealName",
+                            "Email",
+                            "KeepMyEmailAddressPrivate",
+                            "Company",
+                            "Location"});
+                table2.AddRow(new string[] {
+                            "Matt Damon",
+                            "Carlos Orellana",
+                            "Carlos@outlook.com",
+                            "True",
+                            "SoftCompany",
+                            "Home"});
+#line 14
+ testRunner.Then("in the \'Account\' page, validate the expected values in the form:", ((string)(null)), table2, "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate the Email is Required message is displayed when it\'s field is empty")]
+        [NUnit.Framework.CategoryAttribute("mytag")]
+        public virtual void ValidateTheEmailIsRequiredMessageIsDisplayedWhenItsFieldIsEmpty()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "mytag"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate the Email is Required message is displayed when it\'s field is empty", null, new string[] {
+                        "mytag"});
+#line 19
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 20
+ testRunner.Given("Login Blazor web page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 21
+  testRunner.And("go to MyProfile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "UserName",
+                            "RealName",
+                            "Email",
+                            "KeepMyEmailAddressPrivate",
+                            "Company",
+                            "Location"});
+                table3.AddRow(new string[] {
+                            "Matt Damon",
+                            "Carlos Orellana",
+                            "",
+                            "True",
+                            "SoftCompany",
+                            "Home"});
+#line 22
+ testRunner.When("in the \'Account\' page, set the following values:", ((string)(null)), table3, "When ");
+#line hidden
+#line 25
+  testRunner.And("in the \'Account page, click on [Update] button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 26
+ testRunner.Then("in the \'Email\' field, \'an Email is required\' message is displayed when it is empt" +
+                        "y", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate the Please provide a valid email addres message is displayed when it\'s f" +
+            "ield constains an invalid format")]
+        [NUnit.Framework.CategoryAttribute("mytag")]
+        public virtual void ValidateThePleaseProvideAValidEmailAddresMessageIsDisplayedWhenItsFieldConstainsAnInvalidFormat()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "mytag"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate the Please provide a valid email addres message is displayed when it\'s f" +
+                    "ield constains an invalid format", null, new string[] {
+                        "mytag"});
+#line 29
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 30
+ testRunner.Given("Login Blazor web page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 31
+  testRunner.And("go to MyProfile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "UserName",
+                            "RealName",
+                            "Email",
+                            "KeepMyEmailAddressPrivate",
+                            "Company",
+                            "Location"});
+                table4.AddRow(new string[] {
+                            "Matt Damon",
+                            "Carlos Orellana",
+                            "ad.fe.cs",
+                            "True",
+                            "SoftCompany",
+                            "Home"});
+#line 32
+ testRunner.When("in the \'Account\' page, set the following values:", ((string)(null)), table4, "When ");
+#line hidden
+#line 35
+  testRunner.And("in the \'Account page, click on [Update] button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 36
  testRunner.Then("in the \'Email\' field, \'Please provide a valid email address\' message is displayed" +
                         ". When it is an invalid format", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Validate the Delete account")]
+        [NUnit.Framework.CategoryAttribute("mytag")]
+        public virtual void ValidateTheDeleteAccount()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "mytag"};
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate the Delete account", null, new string[] {
+                        "mytag"});
+#line 39
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 40
+ testRunner.Given("Login Blazor web page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 41
+  testRunner.And("go to MyProfile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 42
+ testRunner.When("in the \'Account\' page, select the Delete Account button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 43
+  testRunner.And("in the \'Delete Account\' popup, select the Delete Account button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 44
+ testRunner.Then("in the \'Login\' page, validate the \'Issues\' span is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

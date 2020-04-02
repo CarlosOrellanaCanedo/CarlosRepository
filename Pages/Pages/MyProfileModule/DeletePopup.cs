@@ -1,8 +1,8 @@
 ﻿using BlazorFramework.Controls;
 using BlazorFramework.Factories;
-using Pages.LoginModule;
+using BlazorPages.Pages.LoginModule;
 
-namespace Pages.MyProfileModule
+namespace BlazorPages.Pages.MyProfileModule
 {
     public class DeletePopup
     {
