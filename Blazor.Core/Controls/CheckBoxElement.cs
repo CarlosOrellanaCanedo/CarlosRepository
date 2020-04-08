@@ -1,5 +1,7 @@
 ﻿using System;
 using Blazor.Utilities.ExceptionMethods;
+using Blazor.Utilities.LoggerUtility;
+using Blazor.Utilities.ReportManager;
 
 namespace Blazor.Core.Controls
 {
@@ -94,7 +96,8 @@ namespace Blazor.Core.Controls
             SeleniumActions.MoveToElementAction(WebElement);
 
             string message = $"Moved to (Check Box) [ {ControlName} ].";
-            Console.WriteLine(message);
+            LoggerManager.Instance.Information(message);
+            TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
     }
 

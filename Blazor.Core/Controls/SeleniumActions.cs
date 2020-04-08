@@ -6,6 +6,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Threading;
 using Blazor.Utilities.ExceptionMethods;
+using Blazor.Utilities.LoggerUtility;
 
 namespace Blazor.Core.Controls
 {
@@ -33,9 +34,9 @@ namespace Blazor.Core.Controls
         {
             get
             {
-                if (GetInstance.Driver != null)
+                if (GetInstance.GetDriver != null)
                 {
-                    return GetInstance.Driver;
+                    return GetInstance.GetDriver;
                 }
 
                 return null;
@@ -46,9 +47,9 @@ namespace Blazor.Core.Controls
         {
             get
             {
-                if (GetInstance.Driver != null)
+                if (GetInstance.GetDriver != null)
                 {
-                    return GetInstance.WaitDriver;
+                    return GetInstance.GetWaitDriver;
                 }
 
                 return null;
@@ -277,6 +278,34 @@ namespace Blazor.Core.Controls
         public static void SwitchToDefaultContent()
         {
             GetWebDriver.SwitchTo().DefaultContent();
+        }
+        public static bool TakeScreenshotAllScreen(string saveLocation)
+        {
+            try
+            {
+                //Take screenshot of all screen
+                var screenshotDriver = GetWebDriver as ITakesScreenshot;
+                if (screenshotDriver != null)
+                {
+                    var screenshot = screenshotDriver.GetScreenshot();
+                    screenshot.SaveAsFile(saveLocation, ScreenshotImageFormat.Png); //System.Drawing.Imaging.ImageFormat.Png
+                    Thread.Sleep(500);
+
+                    //Log
+                    LoggerManager.Instance.Information($"Image: [ {saveLocation} ] saved successfully.");
+
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                //Log
+                LoggerManager.Instance.Warning(ex.Message + " " + ex.StackTrace);
+
+                return false;
+            }
         }
     }
 }

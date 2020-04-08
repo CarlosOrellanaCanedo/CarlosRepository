@@ -41,15 +41,13 @@ namespace Blazor.Utilities.LoggerUtility
         {
             if (isFinalResult)
             {
-                Log.ForContext("Categories", TestCaseInfo.Categories)
-                   .ForContext("TestCase", TestCaseInfo.TestCaseName)
+                Log.ForContext("TestCase", TestCaseInfo.TestCaseName)
                    .ForContext("TcResult", "Passed")
                    .Information("{TestCase} " + message, TestCaseInfo.TestCaseName);
             }
             else
             {
-                Log.ForContext("Categories", TestCaseInfo.Categories)
-                   .ForContext("TestCase", TestCaseInfo.TestCaseName)
+                Log.ForContext("TestCase", TestCaseInfo.TestCaseName)
                    .Information(message);
             }
         }
@@ -58,15 +56,13 @@ namespace Blazor.Utilities.LoggerUtility
         {
             if (isFinalResult)
             {
-                Log.ForContext("Categories", TestCaseInfo.Categories)
-                    .ForContext("TestCase", TestCaseInfo.TestCaseName)
+                Log.ForContext("TestCase", TestCaseInfo.TestCaseName)
                     .ForContext("TcResult", "Warning")
                     .Warning("{TestCase} " + message, TestCaseInfo.TestCaseName);
             }
             else
             {
-                Log.ForContext("Categories", TestCaseInfo.Categories)
-                    .ForContext("TestCase", TestCaseInfo.TestCaseName)
+                Log.ForContext("TestCase", TestCaseInfo.TestCaseName)
                     .Warning(message);
             }
         }
@@ -75,15 +71,13 @@ namespace Blazor.Utilities.LoggerUtility
         {
             if (isFinalResult)
             {
-                Log.ForContext("Categories", TestCaseInfo.Categories)
-                    .ForContext("TestCase", TestCaseInfo.TestCaseName)
+                Log.ForContext("TestCase", TestCaseInfo.TestCaseName)
                     .ForContext("TcResult", "Failed")
                     .Error("{TestCase} " + message, TestCaseInfo.TestCaseName);
             }
             else
             {
-                Log.ForContext("Categories", TestCaseInfo.Categories)
-                    .ForContext("TestCase", TestCaseInfo.TestCaseName)
+                Log.ForContext("TestCase", TestCaseInfo.TestCaseName)
                     .Error(message);
             }
         }

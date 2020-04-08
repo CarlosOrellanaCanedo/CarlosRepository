@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Blazor.Utilities.LoggerUtility;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Configuration;
@@ -11,6 +12,7 @@ namespace Blazor.Core.Browser
         {
             IWebDriver instance;
             var driverVersion = ConfigurationManager.AppSettings["BrowserToExecuteTests"];
+            TestCaseInfo.Browser = driverVersion;
 
             switch (driverVersion)
             {

@@ -1,5 +1,6 @@
 ﻿using Blazor.Utilities.ExceptionMethods;
 using Blazor.Utilities.LoggerUtility;
+using Blazor.Utilities.ReportManager;
 
 namespace Blazor.Core.Controls
 {
@@ -21,6 +22,7 @@ namespace Blazor.Core.Controls
             WebElement.Click();
             string message = $"The (Button) [ {ControlName} ] was clicked";
             LoggerManager.Instance.Information(message);
+            TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
 
         public void GoToElement()
@@ -28,6 +30,7 @@ namespace Blazor.Core.Controls
             SeleniumActions.MoveToElementAction(WebElement);
             string message = $"Moved to (Button) [ {ControlName} ].";
             LoggerManager.Instance.Information(message);
+            TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
 
         public void IsDisplayed()

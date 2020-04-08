@@ -97,6 +97,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonBase\BaseScenario.cs" />
+    <Compile Include="CommonBase\BaseStep.cs" />
+    <Compile Include="CommonBase\BaseTest.cs" />
+    <Compile Include="CommonBase\BaseTestManagerClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpecflowExtencion\SpecflowExtensions.cs" />
     <Compile Include="Steps\DashboardSteps\DashboardPageSteps.cs" />
@@ -104,6 +107,7 @@
     <Compile Include="Steps\MyProfileSteps\DeletePopupSteps.cs" />
     <Compile Include="Steps\MyProfileSteps\MyProfilePageSteps.cs" />
     <Compile Include="Steps\MyProfileSteps\UpdatePopupSteps.cs" />
+    <Compile Include="Tools\ScreenCapture.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -120,6 +124,10 @@
     <ProjectReference Include="..\Blazor.Pages\Blazor.Pages.csproj">
       <Project>{052f2cad-941b-48f1-bc3d-0d7a727a1802}</Project>
       <Name>Blazor.Pages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blazor.Utilities\Blazor.Utilities.csproj">
+      <Project>{94ACE46A-81E7-4D5C-8811-C2517A6E28B2}</Project>
+      <Name>Blazor.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Blazor.Utilities.LoggerUtility;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Configuration;
@@ -7,11 +8,11 @@ namespace Blazor.Core.Browser
 {
     public sealed class BrowserManager
     {
-        public int DefaultWaitTime = 40;
+        public int DefaultWaitTime = 30;
 
-        public IWebDriver Driver { get; private set; }
+        public IWebDriver GetDriver { get; private set; }
 
-        public WebDriverWait WaitDriver { get; private set; }
+        public WebDriverWait GetWaitDriver { get; private set; }
 
 
         public string Url => ConfigurationManager.AppSettings["ServerPath"];
@@ -25,33 +26,34 @@ namespace Blazor.Core.Browser
         /// <summary>Initializes this instance.</summary>
         public void Init()
         {
-            Driver = new DriverManager().DriverFactory();
-            WaitDriver = new WebDriverWait(Driver, TimeSpan.FromSeconds(DefaultWaitTime));
+            GetDriver = new DriverManager().DriverFactory();
+            GetWaitDriver = new WebDriverWait(GetDriver, TimeSpan.FromSeconds(DefaultWaitTime));
 
             System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
-            Driver.Navigate().GoToUrl(Url);
+            TestCaseInfo.Site = Url;
+            GetDriver.Navigate().GoToUrl(Url);
             System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
-            Driver.Manage().Window.Maximize();
+            GetDriver.Manage().Window.Maximize();
             System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
-            Driver.Manage().Cookies.DeleteAllCookies();
+            GetDriver.Manage().Cookies.DeleteAllCookies();
 
         }
 
         public void GoTo(string url)
         {
-            Driver.Navigate().GoToUrl(url);
+            GetDriver.Navigate().GoToUrl(url);
         }
 
         public void Close()
         {
-            if (Driver != null)
+            if (GetDriver != null)
             {
                 System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
-                Driver.Close();
-                Driver.Quit();
-                Driver.Dispose();
+                GetDriver.Close();
+                GetDriver.Quit();
+                GetDriver.Dispose();
                 System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));
-                Driver = null;
+                GetDriver = null;
             }
 
             System.Threading.Thread.Sleep(TimeSpan.FromSeconds(1));

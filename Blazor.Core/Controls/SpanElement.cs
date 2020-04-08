@@ -1,6 +1,8 @@
 ﻿using Blazor.Core.Browser;
 using System;
 using Blazor.Utilities.ExceptionMethods;
+using Blazor.Utilities.LoggerUtility;
+using Blazor.Utilities.ReportManager;
 
 namespace Blazor.Core.Controls
 {
@@ -28,7 +30,8 @@ namespace Blazor.Core.Controls
             string text = WebElement.Text;
 
             string message = $"The (Span) [ {ControlName} ] get the text: [ {text} ]";
-            Console.WriteLine(message);
+            LoggerManager.Instance.Information(message);
+            TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
 
             return text.Trim();
         }
@@ -97,7 +100,8 @@ namespace Blazor.Core.Controls
         {
             WebElement.Click();
             string message = $"The (Span) [ {ControlName} ] was clicked";
-            Console.WriteLine(message);
+            LoggerManager.Instance.Information(message);
+            TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
 
         public void IsDisplayed()
