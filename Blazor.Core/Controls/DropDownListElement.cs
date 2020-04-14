@@ -2,8 +2,8 @@
 using OpenQA.Selenium.Support.UI;
 using System;
 using Blazor.Utilities.ExceptionMethods;
-using Blazor.Utilities.ReportManager;
-using Blazor.Utilities.LoggerUtility;
+using Blazor.LoggerManager.Logger;
+using Blazor.ReportManager;
 
 namespace Blazor.Core.Controls
 {
@@ -34,7 +34,7 @@ namespace Blazor.Core.Controls
 
             string message = $"The (Dropdown) [ {ControlName} ] selected the Item: [ {itemToSelect} ]";
 
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
 
@@ -45,7 +45,7 @@ namespace Blazor.Core.Controls
 
             string message = $"The (Dropdown) [ {ControlName} ] selected the Item: [ {itemToSelect} ]";
 
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
 
@@ -54,7 +54,7 @@ namespace Blazor.Core.Controls
             WebElement.FindElement(By.XPath($"./option[starts-with(text(), '{partialTextItemToSelect}')]")).Click();
             string message = $"The (Dropdown) [ {ControlName} ] selected the Item: [ {partialTextItemToSelect} ] using partial text";
 
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
         public void GoToElement()
@@ -62,7 +62,7 @@ namespace Blazor.Core.Controls
             SeleniumActions.MoveToElementAction(WebElement);
 
             string message = $"Moved to (Dropdown) [ {ControlName} ].";
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
 

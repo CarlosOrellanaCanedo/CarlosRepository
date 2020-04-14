@@ -1,7 +1,7 @@
 ﻿using System;
+using Blazor.LoggerManager.Logger;
+using Blazor.ReportManager;
 using Blazor.Utilities.ExceptionMethods;
-using Blazor.Utilities.LoggerUtility;
-using Blazor.Utilities.ReportManager;
 
 namespace Blazor.Core.Controls
 {
@@ -29,7 +29,7 @@ namespace Blazor.Core.Controls
             WebElement.Click();
 
             string message = $"The (Hyperlink) [ {ControlName} ] was clicked";
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
 
@@ -52,7 +52,7 @@ namespace Blazor.Core.Controls
             string text = WebElement.Text;
 
             string message = $"The (Hyperlink): [ {ControlName} ] contains the text: [ {text} ].";
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
 
             return text;

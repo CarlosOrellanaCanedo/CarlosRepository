@@ -1,8 +1,7 @@
 ﻿using Blazor.Core.Browser;
-using System;
+using Blazor.LoggerManager.Logger;
+using Blazor.ReportManager;
 using Blazor.Utilities.ExceptionMethods;
-using Blazor.Utilities.LoggerUtility;
-using Blazor.Utilities.ReportManager;
 
 namespace Blazor.Core.Controls
 {
@@ -30,7 +29,7 @@ namespace Blazor.Core.Controls
             string text = WebElement.Text;
 
             string message = $"The (Span) [ {ControlName} ] get the text: [ {text} ]";
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
 
             return text.Trim();
@@ -100,7 +99,7 @@ namespace Blazor.Core.Controls
         {
             WebElement.Click();
             string message = $"The (Span) [ {ControlName} ] was clicked";
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
 

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using Blazor.LoggerManager.Logger;
+using Blazor.ReportManager;
 using Blazor.Utilities.ExtensionMethods;
-using Blazor.Utilities.LoggerUtility;
-using Blazor.Utilities.ReportManager;
 
 namespace Blazor.Utilities.ExceptionMethods
 {
@@ -9,13 +9,13 @@ namespace Blazor.Utilities.ExceptionMethods
     {
         public static void WarningMessageLog(string warningMessage)
         {
-            LoggerManager.Instance.Warning(warningMessage);
+            LoggerManagerClass.Instance.Warning(warningMessage);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Warning, warningMessage);
         }
 
         public static void ExceptionMessage(string exceptionMessage)
         {
-            LoggerManager.Instance.Information(exceptionMessage);
+            LoggerManagerClass.Instance.Information(exceptionMessage);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, exceptionMessage);
             throw new AutomationException(exceptionMessage);
         }
@@ -26,7 +26,7 @@ namespace Blazor.Utilities.ExceptionMethods
         /// <param name="message"></param>
         public static void ExceptionErrorMessage(string message)
         {
-            LoggerManager.Instance.Error(message);
+            LoggerManagerClass.Instance.Error(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, message);
             throw new AutomationException(message);
         }
@@ -49,12 +49,12 @@ namespace Blazor.Utilities.ExceptionMethods
 
             if (actualValue.Equals(notExpectedValue))
             {
-                LoggerManager.Instance.Information(messageFailed);
+                LoggerManagerClass.Instance.Information(messageFailed);
                 TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, messageFailed);
                 throw new AutomationException(messageFailed);
             }
 
-            LoggerManager.Instance.Information(messagePased);
+            LoggerManagerClass.Instance.Information(messagePased);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePased);
         }
 
@@ -62,12 +62,12 @@ namespace Blazor.Utilities.ExceptionMethods
         {
             if (!actualValue)
             {
-                LoggerManager.Instance.Information(messageFailed);
+                LoggerManagerClass.Instance.Information(messageFailed);
                 TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, messageFailed);
                 throw new AutomationException(messageFailed);
             }
 
-            LoggerManager.Instance.Information(messagePassed);
+            LoggerManagerClass.Instance.Information(messagePassed);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
 
@@ -75,12 +75,12 @@ namespace Blazor.Utilities.ExceptionMethods
         {
             if (actualValue)
             {
-                LoggerManager.Instance.Information(messageFailed);
+                LoggerManagerClass.Instance.Information(messageFailed);
                 TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, messageFailed);
                 throw new AutomationException(messageFailed);
             }
 
-            LoggerManager.Instance.Information(messagePassed);
+            LoggerManagerClass.Instance.Information(messagePassed);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
 
@@ -88,12 +88,12 @@ namespace Blazor.Utilities.ExceptionMethods
         {
             if (!actualValue.Equals(expectedValue))
             {
-                LoggerManager.Instance.Information(messageFailed);
+                LoggerManagerClass.Instance.Information(messageFailed);
                 TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, messageFailed);
                 throw new AutomationException(messageFailed);
             }
 
-            LoggerManager.Instance.Information(messagePassed);
+            LoggerManagerClass.Instance.Information(messagePassed);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
 
@@ -115,12 +115,12 @@ namespace Blazor.Utilities.ExceptionMethods
 
             if (!actualValue.Equals(expectedValue))
             {
-                LoggerManager.Instance.Information(messageFailed);
+                LoggerManagerClass.Instance.Information(messageFailed);
                 TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, messageFailed);
                 throw new AutomationException(messageFailed);
             }
 
-            LoggerManager.Instance.Information(messagePassed);
+            LoggerManagerClass.Instance.Information(messagePassed);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
 
@@ -166,7 +166,7 @@ namespace Blazor.Utilities.ExceptionMethods
                 TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, message);
                 throw new AutomationException(message);
             }
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
         }
 
         public static void AssertContains(string expectedValue, string actualValue, string messagePassed, string messageFailed)
@@ -187,12 +187,12 @@ namespace Blazor.Utilities.ExceptionMethods
 
             if (!actualValue.Contains(expectedValue))
             {
-                LoggerManager.Instance.Information(messageFailed);
+                LoggerManagerClass.Instance.Information(messageFailed);
                 TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, messageFailed);
                 throw new AutomationException(messageFailed);
             }
 
-            LoggerManager.Instance.Information(messagePassed);
+            LoggerManagerClass.Instance.Information(messagePassed);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
 
@@ -221,12 +221,12 @@ namespace Blazor.Utilities.ExceptionMethods
 
             if (!actualValue.ContainsIgnoreCase(expectedValue))
             {
-                LoggerManager.Instance.Information(messageFailed);
+                LoggerManagerClass.Instance.Information(messageFailed);
                 TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, messageFailed);
                 throw new AutomationException(messageFailed);
             }
 
-            LoggerManager.Instance.Information(messagePassed);
+            LoggerManagerClass.Instance.Information(messagePassed);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
 
@@ -248,12 +248,12 @@ namespace Blazor.Utilities.ExceptionMethods
 
             if (actualValue.Contains(notExpectedValue))
             {
-                LoggerManager.Instance.Information(messageFailed);
+                LoggerManagerClass.Instance.Information(messageFailed);
                 TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, messageFailed);
                 throw new AutomationException(messageFailed);
             }
 
-            LoggerManager.Instance.Information(messagePassed);
+            LoggerManagerClass.Instance.Information(messagePassed);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
 
@@ -268,12 +268,12 @@ namespace Blazor.Utilities.ExceptionMethods
 
             if (string.IsNullOrEmpty(actualValue))
             {
-                LoggerManager.Instance.Information(messageFailed);
+                LoggerManagerClass.Instance.Information(messageFailed);
                 TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, messageFailed);
                 throw new AutomationException(messageFailed);
             }
 
-            LoggerManager.Instance.Information(messagePassed);
+            LoggerManagerClass.Instance.Information(messagePassed);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
 
@@ -288,12 +288,12 @@ namespace Blazor.Utilities.ExceptionMethods
 
             if (!string.IsNullOrEmpty(actualValue))
             {
-                LoggerManager.Instance.Information(messageFailed);
+                LoggerManagerClass.Instance.Information(messageFailed);
                 TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, messageFailed);
                 throw new AutomationException(messageFailed);
             }
 
-            LoggerManager.Instance.Information(messagePassed);
+            LoggerManagerClass.Instance.Information(messagePassed);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
 

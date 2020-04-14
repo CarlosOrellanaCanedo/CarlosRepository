@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30001.183
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.Core", "Blazor.Core.csproj", "{DFED3E34-2DF6-440D-BC54-DECCC1B39E37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.Behaviours", "..\Blazor.Behaviours\Blazor.Behaviours.csproj", "{7E3FCC0D-D48F-40E6-8E58-640CE63CC609}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.Utilities", "..\Blazor.Utilities\Blazor.Utilities.csproj", "{94ACE46A-81E7-4D5C-8811-C2517A6E28B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.Pages", "..\Blazor.Pages\Blazor.Pages.csproj", "{052F2CAD-941B-48F1-BC3D-0D7A727A1802}"
@@ -16,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.UnitTest", "..\Blazor.UnitTest\Blazor.UnitTest.csproj", "{F53FEAC9-966C-494D-B3E6-C7DFBD3DF8C4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.ReportManager", "..\Blazor.ReportManager\Blazor.ReportManager.csproj", "{8CAF893B-8DB9-4D12-AD51-4CCF64F9EFAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.LoggerManager", "..\Blazor.LoggerManager\Blazor.LoggerManager.csproj", "{F6A88F99-7BAE-4100-A07F-A5423889F39C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +27,6 @@ Global
 		{DFED3E34-2DF6-440D-BC54-DECCC1B39E37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFED3E34-2DF6-440D-BC54-DECCC1B39E37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFED3E34-2DF6-440D-BC54-DECCC1B39E37}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7E3FCC0D-D48F-40E6-8E58-640CE63CC609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E3FCC0D-D48F-40E6-8E58-640CE63CC609}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E3FCC0D-D48F-40E6-8E58-640CE63CC609}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E3FCC0D-D48F-40E6-8E58-640CE63CC609}.Release|Any CPU.Build.0 = Release|Any CPU
 		{94ACE46A-81E7-4D5C-8811-C2517A6E28B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{94ACE46A-81E7-4D5C-8811-C2517A6E28B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94ACE46A-81E7-4D5C-8811-C2517A6E28B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +47,10 @@ Global
 		{8CAF893B-8DB9-4D12-AD51-4CCF64F9EFAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CAF893B-8DB9-4D12-AD51-4CCF64F9EFAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CAF893B-8DB9-4D12-AD51-4CCF64F9EFAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6A88F99-7BAE-4100-A07F-A5423889F39C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6A88F99-7BAE-4100-A07F-A5423889F39C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6A88F99-7BAE-4100-A07F-A5423889F39C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6A88F99-7BAE-4100-A07F-A5423889F39C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

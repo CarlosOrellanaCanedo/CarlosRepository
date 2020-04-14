@@ -1,10 +1,10 @@
-﻿using Blazor.SpecflowTest.Tools;
+﻿using Blazor.LoggerManager.Logger;
+using Blazor.LoggerManager.LoggerUtilities;
+using Blazor.ReportManager;
+using Blazor.SpecflowTest.Tools;
 using Blazor.Utilities.EnvironmentVariables;
 using Blazor.Utilities.ExceptionMethods;
-using Blazor.Utilities.LoggerUtility;
 using Blazor.Utilities.Process;
-using Blazor.Utilities.ReportManager;
-using Blazor.Utilities.TestUtilities;
 using NUnit.Framework;
 using System;
 using System.IO;
@@ -15,29 +15,35 @@ namespace Blazor.SpecflowTest.CommonBase
     [Binding]
     public sealed class BaseScenario
     {
-        private string TestName { get; set; }
-        private string FullName { get; set; }
-        private string Description { get; set; }
+
+        private readonly ScenarioContext scenarioContext;
+
+        public BaseScenario(ScenarioContext scenarioContext)
+        {
+            this.scenarioContext = scenarioContext;
+        }
 
         [BeforeScenario]
         public void MyScenarioInitialize()
         {
-            //var scenarioTags = ScenarioContext.Current.ScenarioInfo.Tags;
+            // Create Results Folders
+            Util.CreateFolder(ConfigurationVariable.TestCaseResultsPath);
 
-            TestName = TestContext.CurrentContext.Test.Name;
-            FullName = TestContext.CurrentContext.Test.FullName;
-            Description = FeatureContext.Current.FeatureInfo.Title;
-            TestCaseInfo.TestCaseName = TestName;
-            TestName = TestName;
-            FullName = FullName;
+            TestCaseInfo.TestCaseName = scenarioContext.ScenarioInfo.Title;
+            TestCaseInfo.TestCaseFullName = scenarioContext.ScenarioInfo.Title;
+            TestCaseInfo.TestCaseDescription = scenarioContext.ScenarioInfo.Description;
 
             //TC Folder Name
-            var tcFolder = Path.Combine(Util.GetImagesAndVideoFullPath(), TestName);
-            Util.SaveCurrentTc(TestName);
-            Util.CreateTcFolder(tcFolder);
+            var tcFolder = Path.Combine(Util.GetImagesAndVideoFullPath(), TestCaseInfo.TestCaseName);
+            Util.SaveCurrentTc(TestCaseInfo.TestCaseName);
+            
+            Util.CreateFolder(tcFolder);
 
-            TestCaseProvider.Instance.AddNewTestCase(TestName, Description);
+            TestCaseProvider.Instance.AddNewTestCase(TestCaseInfo.TestCaseName, TestCaseInfo.TestCaseDescription);
+            ScreenRecorder.Instance.SetVideoOutputLocation(TestCaseInfo.TestCaseName);
+            ScreenRecorder.Instance.StartRecording();
             BaseTestManagerClass.MyTestInitializeConnection();
+
         }
 
         [AfterScenario]
@@ -52,8 +58,9 @@ namespace Blazor.SpecflowTest.CommonBase
 
                 var stackTrace = TestContext.CurrentContext.Result.StackTrace;
 
-                TestCaseProvider.Instance.LogTestCaseFinalStatus(testFinalStatus, message,
-                    stackTrace, FullName, Description, "", "BDD", TestName);
+                TestCaseProvider.Instance
+                    .LogTestCaseFinalStatus(testFinalStatus, message, stackTrace, 
+                    TestCaseInfo.TestCaseFullName, TestCaseInfo.TestCaseName);
 
                 BaseTestManagerClass.MyTestCleanupClose(); 
                 ProcessManager.KillProcess("chrome");
@@ -86,6 +93,7 @@ namespace Blazor.SpecflowTest.CommonBase
                 case "Skipped":
                 case "Inconclusive":
                     ScreenCapture.TakeScreenshot();
+                    
                     break;
             }
 

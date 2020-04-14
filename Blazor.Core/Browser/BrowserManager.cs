@@ -1,4 +1,4 @@
-﻿using Blazor.Utilities.LoggerUtility;
+﻿using Blazor.LoggerManager.Logger;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;

@@ -1,8 +1,8 @@
 ﻿using OpenQA.Selenium;
 using System;
 using Blazor.Utilities.ExceptionMethods;
-using Blazor.Utilities.LoggerUtility;
-using Blazor.Utilities.ReportManager;
+using Blazor.LoggerManager.Logger;
+using Blazor.ReportManager;
 
 namespace Blazor.Core.Controls
 {
@@ -46,13 +46,13 @@ namespace Blazor.Core.Controls
             if (attribute == null)
             {
                 message = $"The (Text Filed) [ {ControlName} ] is editable - CORRECT -.";
-                LoggerManager.Instance.Information(message);
+                LoggerManagerClass.Instance.Information(message);
                 TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
             }
             else
             {
                 message = $"The (Text Field) [ {ControlName} ] is not editable - WRONG -, When it should be Editable.";
-                LoggerManager.Instance.Error(message);
+                LoggerManagerClass.Instance.Error(message);
                 TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, message);
                 throw new Exception(message);
             }
@@ -65,7 +65,7 @@ namespace Blazor.Core.Controls
             WebElement.SendKeys(text);// set the new value in the text field
 
             string message = $"The (Text Field) [ {ControlName} ] set the value: [ {text} ].";
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
 
@@ -76,7 +76,7 @@ namespace Blazor.Core.Controls
             WebElement.SendKeys(text);// set the new value in the text field
 
             string message = $"The (Text Field) [ {ControlName} ] set the value: [ {text} ].";
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
 
@@ -86,7 +86,7 @@ namespace Blazor.Core.Controls
             WebElement.SendKeys(text); // set the new value in the text field
 
             string message = $"The (Text Field) [ {ControlName} ] set the password value: [ *********** ].";
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
 
@@ -95,7 +95,7 @@ namespace Blazor.Core.Controls
             WebElement.SendKeys(Keys.Tab);
 
             string message = $"The (Text Field) [ {ControlName} ] send a Tab key.";
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
 
@@ -104,7 +104,7 @@ namespace Blazor.Core.Controls
             WebElement.SendKeys(Keys.Enter);
 
             string message = $"The (Text Field) [ {ControlName} ] send a Enter key.";
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
 
@@ -113,7 +113,7 @@ namespace Blazor.Core.Controls
             string text = WebElement.Text;
 
             string message = $"The (Text Field): [ {ControlName} ] contains the text: [ {text} ].";
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
 
             return text;
@@ -124,7 +124,7 @@ namespace Blazor.Core.Controls
             string attribute = WebElement.GetAttribute("value");
 
             string message = $"The (Text Field): [ {ControlName} ] contains the attribute value: [ {attribute} ].";
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
 
             return attribute;
@@ -191,7 +191,7 @@ namespace Blazor.Core.Controls
             catch (Exception)
             {
                 string messagePassed = $"The (Text Field) [ {ControlName} ] is not Displayed - CORRECT -.";
-                LoggerManager.Instance.Information(messagePassed);
+                LoggerManagerClass.Instance.Information(messagePassed);
                 TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
             }
         }
@@ -201,7 +201,7 @@ namespace Blazor.Core.Controls
             SeleniumActions.MoveToElementAction(WebElement);
 
             string message = $"Moved to (Text Field) [ {ControlName} ].";
-            LoggerManager.Instance.Information(message);
+            LoggerManagerClass.Instance.Information(message);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, message);
         }
     }

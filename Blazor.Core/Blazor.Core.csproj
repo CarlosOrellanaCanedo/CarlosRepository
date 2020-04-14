@@ -83,6 +83,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Blazor.LoggerManager\Blazor.LoggerManager.csproj">
+      <Project>{f6a88f99-7bae-4100-a07f-a5423889f39c}</Project>
+      <Name>Blazor.LoggerManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Blazor.ReportManager\Blazor.ReportManager.csproj">
+      <Project>{8caf893b-8db9-4d12-ad51-4ccf64f9efaa}</Project>
+      <Name>Blazor.ReportManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Blazor.Utilities\Blazor.Utilities.csproj">
       <Project>{94ace46a-81e7-4d5c-8811-c2517a6e28b2}</Project>
       <Name>Blazor.Utilities</Name>

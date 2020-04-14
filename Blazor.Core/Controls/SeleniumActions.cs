@@ -6,7 +6,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Threading;
 using Blazor.Utilities.ExceptionMethods;
-using Blazor.Utilities.LoggerUtility;
+using Blazor.LoggerManager.Logger;
 
 namespace Blazor.Core.Controls
 {
@@ -288,11 +288,11 @@ namespace Blazor.Core.Controls
                 if (screenshotDriver != null)
                 {
                     var screenshot = screenshotDriver.GetScreenshot();
-                    screenshot.SaveAsFile(saveLocation, ScreenshotImageFormat.Png); //System.Drawing.Imaging.ImageFormat.Png
+                    screenshot.SaveAsFile(saveLocation, ScreenshotImageFormat.Png);
                     Thread.Sleep(500);
 
                     //Log
-                    LoggerManager.Instance.Information($"Image: [ {saveLocation} ] saved successfully.");
+                    LoggerManagerClass.Instance.Information($"Image: [ {saveLocation} ] saved successfully.");
 
                     return true;
                 }
@@ -302,7 +302,7 @@ namespace Blazor.Core.Controls
             catch (Exception ex)
             {
                 //Log
-                LoggerManager.Instance.Warning(ex.Message + " " + ex.StackTrace);
+                LoggerManagerClass.Instance.Warning(ex.Message + " " + ex.StackTrace);
 
                 return false;
             }

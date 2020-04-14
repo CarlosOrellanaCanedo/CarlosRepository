@@ -1,5 +1,5 @@
 ﻿using Blazor.Core.Controls;
-using Blazor.Utilities.TestUtilities;
+using Blazor.LoggerManager.LoggerUtilities;
 using System;
 using System.Globalization;
 using System.IO;
@@ -16,6 +16,7 @@ namespace Blazor.SpecflowTest.Tools
                 Util.GetCurrectTc() +
                 DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture) + ".png");
 
+            ConfigurationVariable.ScreenPath = fullImagePath;
             //Capture Desktop Image
             SeleniumActions.TakeScreenshotAllScreen(fullImagePath);
         }

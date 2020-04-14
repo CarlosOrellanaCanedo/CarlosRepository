@@ -1,5 +1,6 @@
 ﻿using Blazor.Core.Controls;
-using Blazor.Utilities.ReportManager;
+using Blazor.ReportManager;
+using Blazor.SpecflowTest.Tools;
 
 namespace Blazor.SpecflowTest.CommonBase
 {
@@ -21,7 +22,9 @@ namespace Blazor.SpecflowTest.CommonBase
         {
             //Browser driver close
             SeleniumActions.GetInstance.Close();
+            ScreenRecorder.Instance.StopRecording();
             TestCaseProvider.Instance.EndCurrentTestCase();
+            
         }
 
         /// <summary>
@@ -39,8 +42,7 @@ namespace Blazor.SpecflowTest.CommonBase
             //Log
             TestCaseProvider
                 .Instance
-                .AddStepInCurrentTestCase(LogStepStatus.Passed,
-                "<a style>GoTo LoginPage.</a>");
+                .AddStepInCurrentTestCase(LogStepStatus.Passed, "GoTo LoginPage");
         }
     }
 }
