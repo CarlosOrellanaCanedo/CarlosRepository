@@ -100,10 +100,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonBase\BaseFeature.cs" />
     <Compile Include="CommonBase\BaseScenario.cs" />
     <Compile Include="CommonBase\BaseStep.cs" />
-    <Compile Include="CommonBase\BaseTest.cs" />
     <Compile Include="CommonBase\BaseTestManagerClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpecflowExtencion\SpecflowExtensions.cs" />

@@ -9,14 +9,9 @@ namespace Blazor.Core.Browser
     public sealed class BrowserManager
     {
         public int DefaultWaitTime = 30;
-
         public IWebDriver GetDriver { get; private set; }
-
         public WebDriverWait GetWaitDriver { get; private set; }
-
-
         public string Url => ConfigurationManager.AppSettings["ServerPath"];
-
 
         private BrowserManager()
         {
@@ -39,11 +34,18 @@ namespace Blazor.Core.Browser
 
         }
 
+        /// <summary>
+        /// Navigate To URL
+        /// </summary>
+        /// <param name="url">URL to Navigate</param>
         public void GoTo(string url)
         {
             GetDriver.Navigate().GoToUrl(url);
         }
 
+        /// <summary>
+        /// Close web driver, quit and dispose.
+        /// </summary>
         public void Close()
         {
             if (GetDriver != null)

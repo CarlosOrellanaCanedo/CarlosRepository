@@ -1,4 +1,5 @@
 ﻿using Blazor.LoggerManager.Logger;
+using Blazor.ReportManager;
 using Blazor.Utilities.EnvironmentVariables;
 using OpenQA.Selenium;
 using System;
@@ -95,6 +96,7 @@ namespace Blazor.Core.Controls
                 string message = string.Format("Unable to find the following element: [ {0} ] [ {1} ]. [ {2} ].",
                     _locator, _controlName, errorMessage);
                 LoggerManagerClass.Instance.Error(EnvironmentVariableHelper.GetBddStepDescription() + message);
+                TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, message);
                 throw new NoSuchElementException(message);
             }
         }

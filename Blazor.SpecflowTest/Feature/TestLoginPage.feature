@@ -1,4 +1,4 @@
-﻿Feature: LoginTestCase
+﻿Feature: Login Test Case
 
 
 @mytag

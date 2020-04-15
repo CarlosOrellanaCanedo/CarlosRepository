@@ -1,4 +1,5 @@
 ﻿using Blazor.Core.Controls;
+using Blazor.LoggerManager.Logger;
 using Blazor.ReportManager;
 using Blazor.SpecflowTest.Tools;
 
@@ -11,7 +12,9 @@ namespace Blazor.SpecflowTest.CommonBase
         {
             //Browser driver init
             SeleniumActions.GetInstance.Init();
-
+            
+            ScreenRecorder.Instance.SetVideoOutputLocation(TestCaseInfo.TestCaseName);
+            ScreenRecorder.Instance.StartRecording();
             //Login as
             Login();
         }
@@ -23,8 +26,8 @@ namespace Blazor.SpecflowTest.CommonBase
             //Browser driver close
             SeleniumActions.GetInstance.Close();
             ScreenRecorder.Instance.StopRecording();
+            ScreenRecorder.Instance.DeleteOldRecordings();
             TestCaseProvider.Instance.EndCurrentTestCase();
-            
         }
 
         /// <summary>

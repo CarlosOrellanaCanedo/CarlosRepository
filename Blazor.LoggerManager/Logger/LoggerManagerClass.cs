@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using Serilog;
+﻿using Serilog;
 using System;
 using System.IO;
 using Blazor.LoggerManager.LoggerUtilities;

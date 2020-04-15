@@ -7,24 +7,24 @@ namespace Blazor.LoggerManager.LoggerUtilities
 {
     public static class Util
     {
-        public static string GetImagesAndVideoFullPath()
-        {
-            try
-            {
-                var resultsPath = ConfigurationVariable.TestCaseResultsPath;
-                var imagesAndVideos = Path.Combine(resultsPath, "ImagesAndVideos.txt");
+        //public static string GetImagesAndVideoFullPath()
+        //{
+        //    try
+        //    {
+        //        var resultsPath = ConfigurationVariable.TestCaseResultsImageVideoPath;
+        //        var imagesAndVideos = Path.Combine(resultsPath, "ImagesAndVideos.txt");
 
-                using (StreamWriter sw = (File.Exists(imagesAndVideos)) 
-                    ? File.AppendText(imagesAndVideos) : File.CreateText(imagesAndVideos))
+        //        using (StreamWriter sw = (File.Exists(imagesAndVideos)) 
+        //            ? File.AppendText(imagesAndVideos) : File.CreateText(imagesAndVideos))
                 
-                return resultsPath;
-            }
-            catch (Exception ex)
-            {
-                LoggerManagerClass.Instance.Error(ex.Message);
-                return string.Empty;
-            }
-        }
+        //        return resultsPath;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LoggerManagerClass.Instance.Error(ex.Message);
+        //        return string.Empty;
+        //    }
+        //}
 
         public static string GetCurrectTc()
         {

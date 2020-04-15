@@ -72,6 +72,10 @@
       <Project>{066eb567-1211-4f57-9187-0e039cd47f51}</Project>
       <Name>Blazor.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Blazor.ReportManager\Blazor.ReportManager.csproj">
+      <Project>{8CAF893B-8DB9-4D12-AD51-4CCF64F9EFAA}</Project>
+      <Name>Blazor.ReportManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

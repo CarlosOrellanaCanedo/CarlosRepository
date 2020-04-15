@@ -6,6 +6,12 @@ namespace Blazor.Core.Browser
 {
     public static class BrowserExecutor
     {
+        /// <summary>
+        /// Help to execute selenium driver using Java Script
+        /// </summary>
+        /// <param name="driver">Selenium driver</param>
+        /// <param name="script">Java Script method to use</param>
+        /// <returns></returns>
         public static object ExecuteJavaScript(this IWebDriver driver, string script)
         {
             try
@@ -19,6 +25,12 @@ namespace Blazor.Core.Browser
             }
         }
 
+        /// <summary>
+        /// Help to execute selenium driver using Java Script and send arguments
+        /// </summary>
+        /// <param name="javaScript">Java script method</param>
+        /// <param name="arguments">Arguments</param>
+        /// <returns></returns>
         public static object ExecuteJavaScript(string javaScript, params object[] arguments)
         {
             try

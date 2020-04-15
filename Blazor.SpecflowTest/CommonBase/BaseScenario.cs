@@ -28,22 +28,19 @@ namespace Blazor.SpecflowTest.CommonBase
         {
             // Create Results Folders
             Util.CreateFolder(ConfigurationVariable.TestCaseResultsPath);
+            Util.CreateFolder(ConfigurationVariable.TestCaseResultsImageVideoPath);
 
             TestCaseInfo.TestCaseName = scenarioContext.ScenarioInfo.Title;
             TestCaseInfo.TestCaseFullName = scenarioContext.ScenarioInfo.Title;
             TestCaseInfo.TestCaseDescription = scenarioContext.ScenarioInfo.Description;
 
+
             //TC Folder Name
-            var tcFolder = Path.Combine(Util.GetImagesAndVideoFullPath(), TestCaseInfo.TestCaseName);
+            var tcFolder = Path.Combine(ConfigurationVariable.TestCaseResultsImageVideoPath, TestCaseInfo.TestCaseName);
             Util.SaveCurrentTc(TestCaseInfo.TestCaseName);
-            
             Util.CreateFolder(tcFolder);
-
             TestCaseProvider.Instance.AddNewTestCase(TestCaseInfo.TestCaseName, TestCaseInfo.TestCaseDescription);
-            ScreenRecorder.Instance.SetVideoOutputLocation(TestCaseInfo.TestCaseName);
-            ScreenRecorder.Instance.StartRecording();
             BaseTestManagerClass.MyTestInitializeConnection();
-
         }
 
         [AfterScenario]
@@ -67,6 +64,16 @@ namespace Blazor.SpecflowTest.CommonBase
             }
             catch (Exception e)
             {
+                //var testFinalStatus = CheckTestCaseStatus();
+                //var message = EnvironmentVariableHelper.GetBddStepDescription() +
+                //    TestContext.CurrentContext.Result.Message;
+
+                //var stackTrace = TestContext.CurrentContext.Result.StackTrace;
+
+                //TestCaseProvider.Instance
+                //    .LogTestCaseFinalStatus(testFinalStatus, message, stackTrace,
+                //    TestCaseInfo.TestCaseFullName, TestCaseInfo.TestCaseName);
+
                 BaseTestManagerClass.MyTestCleanupClose();
 
                 //Kill chrome driver

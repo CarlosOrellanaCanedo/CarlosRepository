@@ -22,7 +22,7 @@ namespace Blazor.ReportManager
     {
         private string _testName;
         private ExtentTest _currentTestCase;
-        private readonly ExtentReports _extentReports;
+        private ExtentReports _extentReports;
 
         private readonly string _fileLogsFailed =
             Path.Combine(ConfigurationVariable.TestCaseResultsPath, "BlazorFailedTests");
@@ -37,9 +37,9 @@ namespace Blazor.ReportManager
             Path.Combine(ConfigurationVariable.TestCaseResultsPath,
                 ConfigurationVariable.ReportFileName);
 
-        private static TestCaseProvider _testCaseProvider;
+        private static TestCaseProvider instance;
         public static TestCaseProvider Instance =>
-            _testCaseProvider ?? (_testCaseProvider = new TestCaseProvider());
+            instance ?? (instance = new TestCaseProvider());
 
         private TestCaseProvider()
         {
@@ -47,7 +47,14 @@ namespace Blazor.ReportManager
             _fileLogsFailedAndMessage = _fileLogsFailedAndMessage + ".txt";
             _excecutionFinishedFlag = _excecutionFinishedFlag + ".txt";
 
-            _extentReports = new ExtentReports(_reprotFileFullPath + ".html", false);
+            try
+            {
+                _extentReports = new ExtentReports(_reprotFileFullPath + ".html", false, DisplayOrder.NewestFirst);
+            }
+            catch(NullReferenceException)
+            {
+                _extentReports = new ExtentReports(_reprotFileFullPath + ".html", false, DisplayOrder.NewestFirst);
+            }
             _extentReports.AssignProject("Blazor");
 
             string local = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -153,7 +160,6 @@ namespace Blazor.ReportManager
             {
                 case "Failed":
                     logStatus = LogStatus.Fail;
-                    AddPicturesOnFail();
                     fullError = TestCaseHasFailed(errorMessage, testContextStackTrace, tcFullName, tcName, logStatus);
                     
                     break;
@@ -164,7 +170,6 @@ namespace Blazor.ReportManager
 
                 case "Skipped":
                     logStatus = LogStatus.Skip;
-                    AddPicturesOnFail();
                     LoggerManagerClass.Instance.Warning(@"Test ended with: [ " + logStatus + @" ]. ", true);
                     break;
 
@@ -296,48 +301,6 @@ namespace Blazor.ReportManager
             {
                 //Log
                 LoggerManagerClass.Instance.Error(tcName + " - " + ex.Message);
-            }
-        }
-
-        private string GetCurrentId()
-        {
-            try
-            {
-                var resultsPath = ConfigurationManager.AppSettings["TestCaseResultsPath"];
-                var currentId = Path.Combine(resultsPath, "CurrentId.txt");
-
-                using (var sw = new StreamReader(currentId))
-                {
-                    return sw.ReadLine();
-                }
-            }
-            catch (Exception ex)
-            {
-                //Log
-                LoggerManagerClass.Instance.Error(ex.Message);
-
-                return string.Empty;
-            }
-        }
-
-        private string GetImagesAndVideoFullPath()
-        {
-            try
-            {
-                var resultsPath = ConfigurationManager.AppSettings["TestCaseResultsPath"];
-                var imagesAndVideos = Path.Combine(resultsPath, "ImagesAndVideos.txt");
-
-                using (var sw = new StreamReader(imagesAndVideos))
-                {
-                    return sw.ReadLine();
-                }
-            }
-            catch (Exception ex)
-            {
-                //Log
-                LoggerManagerClass.Instance.Error(ex.Message);
-
-                return string.Empty;
             }
         }
 

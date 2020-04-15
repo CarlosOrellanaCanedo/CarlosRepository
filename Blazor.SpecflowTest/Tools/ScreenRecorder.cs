@@ -2,15 +2,16 @@
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using Blazor.LoggerManager.Logger;
 using Blazor.LoggerManager.LoggerUtilities;
 using Microsoft.Expression.Encoder.ScreenCapture;
 
 namespace Blazor.SpecflowTest.Tools
 {
-    public class ScreenRecorder
+    public sealed class ScreenRecorder
     {
         private ScreenCaptureJob screenCaptureJob = new ScreenCaptureJob();
-        private string OutputDirectoryName = Path.Combine(Util.GetImagesAndVideoFullPath(), Util.GetCurrectTc());
+        private string OutputDirectoryName = string.Empty;
 
         private ScreenRecorder()
         {
@@ -18,23 +19,26 @@ namespace Blazor.SpecflowTest.Tools
         }
         public void SetVideoOutputLocation(string testName)
         {
+            OutputDirectoryName = Path.Combine(ConfigurationVariable.TestCaseResultsImageVideoPath, Util.GetCurrectTc());
             if (string.IsNullOrEmpty(testName))
             {
                 testName = "AutomationTest";
             }
             else
             {
-                string path = Path.Combine(OutputDirectoryName, $"{testName}{DateTime.UtcNow.ToString("MMddyyyy_Hmm")}.wmv");
+                string name = $"{testName}{DateTime.UtcNow.ToString("MMddyyyy_Hmm")}.wmv";
+                string path = Path.Combine(OutputDirectoryName, name);
                 screenCaptureJob.OutputScreenCaptureFileName = path;
                 ConfigurationVariable.VideoPath = path;
+                ConfigurationVariable.VideoName = name;
                     
             }
         }
-        private void DeleteOldRecordings()
+        public void DeleteOldRecordings()
         {
             int daysCount = Convert.ToInt16(ConfigurationManager.AppSettings["recordingHistory"]); Directory.GetFiles(OutputDirectoryName)
                  .Select(f => new FileInfo(f))
-                 .Where(f => (f.LastAccessTime < DateTime.Now.AddDays(-daysCount)) && (f.FullName.Contains(".wmv")))
+                 .Where(f => ((f.LastAccessTime < DateTime.Now.AddDays(-daysCount)) && (f.FullName.Contains(ConfigurationVariable.VideoName))))
                  .ToList()
                  .ForEach(f => f.Delete());
         }

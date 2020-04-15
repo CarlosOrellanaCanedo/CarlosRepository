@@ -11,7 +11,7 @@ namespace Blazor.SpecflowTest.Tools
         public static void TakeScreenshot()
         {
             //Path to save the image
-            var imagePath = Path.Combine(Util.GetImagesAndVideoFullPath(), Util.GetCurrectTc());
+            var imagePath = Path.Combine(ConfigurationVariable.TestCaseResultsImageVideoPath, Util.GetCurrectTc());
             var fullImagePath = Path.Combine(imagePath,
                 Util.GetCurrectTc() +
                 DateTime.Now.Ticks.ToString(CultureInfo.InvariantCulture) + ".png");

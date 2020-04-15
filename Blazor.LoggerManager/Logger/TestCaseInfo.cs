@@ -12,18 +12,19 @@ namespace Blazor.LoggerManager.Logger
         public static string TestCaseName { 
             get
             {
-                if (_testCaseName != null)
-                {
-                    return _testCaseName.RemoveSpecialCharacters();
-                }
-                else
-                {
-                    return string.Empty;
-                }
+                return _testCaseName;
             }
             set 
             {
-                _testCaseName = value;
+                string temp = value;
+                if (temp != null)
+                {
+                    _testCaseName = temp.RemoveSpecialCharacters();
+                }
+                else
+                {
+                    _testCaseName = "";
+                }
             }
         }
 
@@ -32,18 +33,19 @@ namespace Blazor.LoggerManager.Logger
         {
             get
             {
-                if (_testCaseFullName != null)
-                {
-                    return _testCaseFullName.RemoveSpecialCharacters();
-                }
-                else
-                {
-                    return string.Empty;
-                }
+                return _testCaseFullName;
             }
             set
             {
-                _testCaseFullName = value;
+                string temp = value;
+                if (temp != null)
+                {
+                    _testCaseFullName = temp.RemoveSpecialCharacters();
+                }
+                else
+                {
+                    _testCaseFullName = "";
+                }
             }
         }
 
@@ -52,18 +54,19 @@ namespace Blazor.LoggerManager.Logger
         {
             get
             {
-                if (_testCaseDescription != null)
-                {
-                    return RemoveSpecialCharacters(_testCaseDescription);
-                }
-                else
-                {
-                    return string.Empty;
-                }
+                return _testCaseDescription;
             }
             set
             {
-                _testCaseDescription = value;
+                string temp = value;
+                if (temp != null)
+                {
+                    _testCaseDescription = temp.RemoveSpecialCharacters();
+                }
+                else
+                {
+                    _testCaseDescription = "";
+                }
             }
         }
 
@@ -72,18 +75,19 @@ namespace Blazor.LoggerManager.Logger
         {
             get
             {
-                if (_featureName != null)
-                {
-                    return _featureName.RemoveSpecialCharacters();
-                }
-                else
-                {
-                    return string.Empty;
-                }
+                return _featureName;
             }
             set
             {
-                _featureName = value;
+                string temp = value;
+                if (temp != null)
+                {
+                    _featureName = temp.RemoveSpecialCharacters();
+                }
+                else
+                {
+                    _featureName = "";
+                }
             }
         }
 
@@ -94,11 +98,12 @@ namespace Blazor.LoggerManager.Logger
             StringBuilder sb = new StringBuilder();
             foreach (char c in str)
             {
-                if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '.' || c == '_')
+                if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
                 {
                     sb.Append(c);
                 }
             }
+
             return sb.ToString();
         }
     }

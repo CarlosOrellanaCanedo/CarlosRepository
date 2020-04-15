@@ -1,4 +1,5 @@
 ﻿using Blazor.Core.Controls;
+using Blazor.ReportManager;
 using OpenQA.Selenium;
 
 namespace Blazor.Pages.AccessToProjects.LeftMenu
@@ -28,6 +29,8 @@ namespace Blazor.Pages.AccessToProjects.LeftMenu
             {
                 leftContainer.FindElementWait(By.XPath(xpath), groupName).Click();
             }
+            
+            TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, $"Go to: {groupName}");
         }
     }
 }
