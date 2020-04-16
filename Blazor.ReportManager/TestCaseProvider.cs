@@ -1,6 +1,5 @@
 ﻿using RelevantCodes.ExtentReports;
 using System;
-using System.Configuration;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Reflection;
@@ -47,14 +46,7 @@ namespace Blazor.ReportManager
             _fileLogsFailedAndMessage = _fileLogsFailedAndMessage + ".txt";
             _excecutionFinishedFlag = _excecutionFinishedFlag + ".txt";
 
-            try
-            {
-                _extentReports = new ExtentReports(_reprotFileFullPath + ".html", false, DisplayOrder.NewestFirst);
-            }
-            catch(NullReferenceException)
-            {
-                _extentReports = new ExtentReports(_reprotFileFullPath + ".html", false, DisplayOrder.NewestFirst);
-            }
+            _extentReports = new ExtentReports(_reprotFileFullPath + ".html", false, DisplayOrder.NewestFirst);
             _extentReports.AssignProject("Blazor");
 
             string local = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -79,7 +71,7 @@ namespace Blazor.ReportManager
 
         public void EndCurrentTestCase()
         {
-
+            _extentReports.EndTest(_currentTestCase);
             _extentReports.Flush();
         }
 
@@ -109,6 +101,12 @@ namespace Blazor.ReportManager
             }
         }
 
+        public void AddBDDStepOnStepDefinitions(string stepType, string stepDefinitionName)
+        { 
+            string stepConvert = $"<span style='color:blue'>{stepType} : {stepDefinitionName}</span>";
+            _currentTestCase.Log(LogStatus.Pass, stepConvert);
+        }
+
         public void AddStepInCurrentTestCase(LogStepStatus logStepStatus,
             string details = "", string exceptionMessage = "")
         {
@@ -133,21 +131,6 @@ namespace Blazor.ReportManager
                     _currentTestCase.Log(LogStatus.Skip, details);
                     break;
             }
-        }
-
-        public string GetCurrentTcName()
-        {
-            return _testName;
-        }
-
-        public string GetExecutionFinishedFlagFileNAme()
-        {
-            return _excecutionFinishedFlag;
-        }
-
-        public string GetFailedTcsFileName()
-        {
-            return _fileLogsFailed;
         }
 
         public void LogTestCaseFinalStatus(string status, string errorMessage,
@@ -285,7 +268,8 @@ namespace Blazor.ReportManager
                     Thread.Sleep(TimeSpan.FromSeconds(1));
 
                     //Log
-                    LoggerManagerClass.Instance.Information($"File to log failed tests and error messages: {_fileLogsFailedAndMessage} created.");
+                    LoggerManagerClass.Instance.Information($"File to log failed tests and error messages: " +
+                        $"{_fileLogsFailedAndMessage} created.");
                 }
 
                 errorMessage = Regex.Replace(errorMessage, @"\t|\n|\r", "");

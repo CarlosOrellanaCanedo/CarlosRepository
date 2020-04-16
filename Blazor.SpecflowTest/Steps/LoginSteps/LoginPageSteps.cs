@@ -1,5 +1,4 @@
 ﻿using Blazor.Pages.Pages.LoginModule;
-using System.Runtime.InteropServices.WindowsRuntime;
 using TechTalk.SpecFlow;
 
 namespace Blazor.SpeckflowTest.Steps.LoginSteps
@@ -32,7 +31,6 @@ namespace Blazor.SpeckflowTest.Steps.LoginSteps
         [Given(@"Login Blazor web page")]
         public void GivenLoginBlazorWebPage()
         {
-
             loginPage
                .SetEmailOrUserName("carlos@outlook.com")
                .SetPassword("control123")

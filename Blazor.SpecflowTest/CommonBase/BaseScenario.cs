@@ -33,7 +33,7 @@ namespace Blazor.SpecflowTest.CommonBase
             TestCaseInfo.TestCaseName = scenarioContext.ScenarioInfo.Title;
             TestCaseInfo.TestCaseFullName = scenarioContext.ScenarioInfo.Title;
             TestCaseInfo.TestCaseDescription = scenarioContext.ScenarioInfo.Description;
-
+            
 
             //TC Folder Name
             var tcFolder = Path.Combine(ConfigurationVariable.TestCaseResultsImageVideoPath, TestCaseInfo.TestCaseName);
@@ -48,7 +48,7 @@ namespace Blazor.SpecflowTest.CommonBase
         {
             try
             {
-                // TC Description - Feature title
+                // Clean up all connections and generate report
                 var testFinalStatus = CheckTestCaseStatus();
                 var message = EnvironmentVariableHelper.GetBddStepDescription() + 
                     TestContext.CurrentContext.Result.Message;
@@ -64,16 +64,7 @@ namespace Blazor.SpecflowTest.CommonBase
             }
             catch (Exception e)
             {
-                //var testFinalStatus = CheckTestCaseStatus();
-                //var message = EnvironmentVariableHelper.GetBddStepDescription() +
-                //    TestContext.CurrentContext.Result.Message;
-
-                //var stackTrace = TestContext.CurrentContext.Result.StackTrace;
-
-                //TestCaseProvider.Instance
-                //    .LogTestCaseFinalStatus(testFinalStatus, message, stackTrace,
-                //    TestCaseInfo.TestCaseFullName, TestCaseInfo.TestCaseName);
-
+                // Clean up all connections and generate report
                 BaseTestManagerClass.MyTestCleanupClose();
 
                 //Kill chrome driver
