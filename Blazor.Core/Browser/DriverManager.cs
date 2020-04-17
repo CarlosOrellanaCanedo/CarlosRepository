@@ -18,8 +18,8 @@ namespace Blazor.Core.Browser
             {
                 case "Chrome":
                     var chromeOptions = new ChromeOptions();
-                    chromeOptions.AddArguments("--disable-infobars");
-                    chromeOptions.AddArguments("--start-maximized");
+                    chromeOptions.AddArguments("disable-infobars");
+                    chromeOptions.AddArguments("start-maximized");
 
                     instance = new ChromeDriver(DriverUtils.Path, chromeOptions, TimeSpan.FromMinutes(2));
 
@@ -37,7 +37,7 @@ namespace Blazor.Core.Browser
         {
             var chromeOptions = new ChromeOptions();
             chromeOptions.AddArguments("disable-infobars");
-            chromeOptions.AddArguments("--start-maximized");
+            chromeOptions.AddArguments("start-maximized");
 
             return new ChromeDriver(DriverUtils.Path, chromeOptions, TimeSpan.FromMinutes(2));
         }
