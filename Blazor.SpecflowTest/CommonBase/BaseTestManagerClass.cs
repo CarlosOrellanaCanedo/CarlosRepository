@@ -7,7 +7,9 @@ namespace Blazor.SpecflowTest.CommonBase
 {
     public static class BaseTestManagerClass
     {
-        /// <summary>Mies the test initialize connection.</summary>
+        /// <summary>
+        /// The method initializes the web driver and start recording the video.
+        /// </summary>
         public static void MyTestInitializeConnection()
         {
             //Browser driver init
@@ -20,13 +22,12 @@ namespace Blazor.SpecflowTest.CommonBase
         }
 
 
-        /// <summary>Mies the test cleanup close.</summary>
+        /// <summary>The method cleanup and close all services.</summary>
         public static void MyTestCleanupClose()
         {
             //Browser driver close
             SeleniumActions.GetInstance.Close();
             ScreenRecorder.Instance.StopRecording();
-            ScreenRecorder.Instance.DeleteOldRecordings();
             TestCaseProvider.Instance.EndCurrentTestCase();
         }
 

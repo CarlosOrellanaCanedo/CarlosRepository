@@ -1,18 +1,25 @@
 ﻿using System.Collections.Generic;
 using Blazor.LoggerManager.Logger;
 using Blazor.ReportManager;
-using Blazor.Utilities.ExtensionMethods;
 
 namespace Blazor.Utilities.ExceptionMethods
 {
     public static class ExceptionManager
     {
+        /// <summary>
+        /// This method logs the Warning Message Logs
+        /// </summary>
+        /// <param name="warningMessage">strign warning message</param>
         public static void WarningMessageLog(string warningMessage)
         {
             LoggerManagerClass.Instance.Warning(warningMessage);
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Warning, warningMessage);
         }
 
+        /// <summary>
+        /// This method logs the exception messages and throw and exception.
+        /// </summary>
+        /// <param name="exceptionMessage">string exception message</param>
         public static void ExceptionMessage(string exceptionMessage)
         {
             LoggerManagerClass.Instance.Information(exceptionMessage);
@@ -23,14 +30,21 @@ namespace Blazor.Utilities.ExceptionMethods
         /// <summary>
         /// This method manages the errors 
         /// </summary>
-        /// <param name="message"></param>
-        public static void ExceptionErrorMessage(string message)
+        /// <param name="message">string exception error message</param>
+        public static void ExceptionErrorMessage(string exceptionErrorMessage)
         {
-            LoggerManagerClass.Instance.Error(message);
-            TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, message);
-            throw new AutomationException(message);
+            LoggerManagerClass.Instance.Error(exceptionErrorMessage);
+            TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, exceptionErrorMessage);
+            throw new AutomationException(exceptionErrorMessage);
         }
 
+        /// <summary>
+        /// This method evaluates it the actual value is not equal to expected value.
+        /// </summary>
+        /// <param name="notExpectedValue">string not expected value</param>
+        /// <param name="actualValue">string actual value</param>
+        /// <param name="messagePased">string message passed</param>
+        /// <param name="messageFailed">string message failed</param>
         public static void AssertAreNotEqual(string notExpectedValue, string actualValue, string messagePased, string messageFailed)
         {
             if (notExpectedValue == null)
@@ -58,6 +72,12 @@ namespace Blazor.Utilities.ExceptionMethods
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePased);
         }
 
+        /// <summary>
+        /// This method evaluates if the actual value is true.
+        /// </summary>
+        /// <param name="actualValue">bool actual value</param>
+        /// <param name="messagePassed">string message passed</param>
+        /// <param name="messageFailed">string message failed</param>
         public static void IsTrue(bool actualValue, string messagePassed, string messageFailed)
         {
             if (!actualValue)
@@ -71,6 +91,12 @@ namespace Blazor.Utilities.ExceptionMethods
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
 
+        /// <summary>
+        /// This method evaluates if the actual value is False.
+        /// </summary>
+        /// <param name="actualValue">bool actual value</param>
+        /// <param name="messagePassed">string message passed</param>
+        /// <param name="messageFailed">string message failed</param>
         public static void IsFalse(bool actualValue, string messagePassed, string messageFailed)
         {
             if (actualValue)
@@ -84,6 +110,13 @@ namespace Blazor.Utilities.ExceptionMethods
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
 
+        /// <summary>
+        /// This method evaluates if the actual value is equal to expected value.
+        /// </summary>
+        /// <param name="expectedValue">int expected value</param>
+        /// <param name="actualValue">int actual value</param>
+        /// <param name="messagePassed">string message passed</param>
+        /// <param name="messageFailed">string message failed</param>
         public static void AssertAreEqual(int expectedValue, int actualValue, string messagePassed, string messageFailed)
         {
             if (!actualValue.Equals(expectedValue))
@@ -97,6 +130,13 @@ namespace Blazor.Utilities.ExceptionMethods
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
 
+        /// <summary>
+        /// This method evaluates if the actual value is equal to expected value.
+        /// </summary>
+        /// <param name="expectedValue">string expected value</param>
+        /// <param name="actualValue">string actual value</param>
+        /// <param name="messagePassed">string message passed</param>
+        /// <param name="messageFailed">string message failed</param>
         public static void AssertAreEqual(string expectedValue, string actualValue, string messagePassed, string messageFailed)
         {
             if (expectedValue == null)
@@ -124,6 +164,13 @@ namespace Blazor.Utilities.ExceptionMethods
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
 
+        /// <summary>
+        /// This method evaluates if the actual value is equal to expected value.
+        /// </summary>
+        /// <param name="expectedValue">IEnumerable<string> expected value</param>
+        /// <param name="actualValue">IEnumerable<string> actual value</param>
+        /// <param name="messagePassed">string message passed</param>
+        /// <param name="messageFailed">string message failed</param>
         public static void AssertAreEqual(IEnumerable<string> expectedValue, IEnumerable<string> actualValue, string section = "")
         {
             if (expectedValue == null)
@@ -169,6 +216,13 @@ namespace Blazor.Utilities.ExceptionMethods
             LoggerManagerClass.Instance.Information(message);
         }
 
+        /// <summary>
+        /// This method evaluates if the actual value contains to expected value.
+        /// </summary>
+        /// <param name="expectedValue">string expected value</param>
+        /// <param name="actualValue">string actual value</param>
+        /// <param name="messagePassed">string message passed</param>
+        /// <param name="messageFailed">string message failed</param>
         public static void AssertContains(string expectedValue, string actualValue, string messagePassed, string messageFailed)
         {
             if (expectedValue == null)
@@ -197,39 +251,12 @@ namespace Blazor.Utilities.ExceptionMethods
         }
 
         /// <summary>
-        /// 
+        /// This method evaluates if the actual value not contains to expected value.
         /// </summary>
-        /// <param name="expectedValue"></param>
-        /// <param name="actualValue"></param>
-        /// <param name="messagePassed"></param>
-        /// <param name="messageFailed"></param>
-        public static void AssertContainsIgnoreCase(string expectedValue, string actualValue, string messagePassed, string messageFailed)
-        {
-            if (expectedValue == null)
-            {
-                string messageExpected =
-                    $"The Expected Value is null; it's not possible to validate the AssertContains assertion. on [ {ControlNameInfo.ControlName} ] element";
-                throw new AutomationException(messageExpected);
-            }
-
-            if (actualValue == null)
-            {
-                string messageActualValue =
-                    $"The actualValue is null; it's not possible to validate the AssertContains assertion. on [ {ControlNameInfo.ControlName} ] element";
-                throw new AutomationException(messageActualValue);
-            }
-
-            if (!actualValue.ContainsIgnoreCase(expectedValue))
-            {
-                LoggerManagerClass.Instance.Information(messageFailed);
-                TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Failed, messageFailed);
-                throw new AutomationException(messageFailed);
-            }
-
-            LoggerManagerClass.Instance.Information(messagePassed);
-            TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
-        }
-
+        /// <param name="notExpectedValue">string not expected value</param>
+        /// <param name="actualValue">string actual value</param>
+        /// <param name="messagePassed">string message passed</param>
+        /// <param name="messageFailed">string message failed</param>
         public static void AssertNotContains(string notExpectedValue, string actualValue, string messagePassed, string messageFailed)
         {
             if (notExpectedValue == null)
@@ -257,6 +284,12 @@ namespace Blazor.Utilities.ExceptionMethods
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
 
+        /// <summary>
+        /// This method evaluates if the actual value is not empty.
+        /// </summary>
+        /// <param name="actualValue">string actual value</param>
+        /// <param name="messagePassed">string message passed</param>
+        /// <param name="messageFailed">string message failed</param>
         public static void AssertIsNotEmpty(string actualValue, string messagePassed, string messageFailed)
         {
             if (actualValue == null)
@@ -277,6 +310,12 @@ namespace Blazor.Utilities.ExceptionMethods
             TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
 
+        /// <summary>
+        /// This method evaluates if the actual value Is empty.
+        /// </summary>
+        /// <param name="actualValue">string actual value</param>
+        /// <param name="messagePassed">string message passed</param>
+        /// <param name="messageFailed">string message failed</param>
         public static void AssertIsEmpty(string actualValue, string messagePassed, string messageFailed)
         {
             if (actualValue == null)
@@ -298,16 +337,19 @@ namespace Blazor.Utilities.ExceptionMethods
         }
 
         /// <summary>
-        /// Validate that the value is not null
+        /// This method validates that the value is not null
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="messageFail"></param>
-        public static void ValidateNotNull(string value, string messageFail)
+        /// <param name="actualValue">string actual value</param>
+        /// <param name="messageFail">string message faile</param>
+        public static void ValidateNotNull(string actualValue, string messagePassed, string messageFail)
         {
-            if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(actualValue))
             {
                 ExceptionErrorMessage(messageFail);
             }
+
+            LoggerManagerClass.Instance.Information(messagePassed);
+            TestCaseProvider.Instance.AddStepInCurrentTestCase(LogStepStatus.Passed, messagePassed);
         }
     }
 }

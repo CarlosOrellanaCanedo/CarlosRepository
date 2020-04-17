@@ -2,12 +2,14 @@
 using System.Configuration;
 using System.IO;
 using System.Linq;
-using Blazor.LoggerManager.Logger;
 using Blazor.LoggerManager.LoggerUtilities;
 using Microsoft.Expression.Encoder.ScreenCapture;
 
 namespace Blazor.UnitTest.Tools
 {
+    /// <summary>
+    /// Screen Recorder class is a Singleton class, this helps to capture a video record.
+    /// </summary>
     public sealed class ScreenRecorder
     {
         private ScreenCaptureJob screenCaptureJob = new ScreenCaptureJob();
@@ -17,6 +19,11 @@ namespace Blazor.UnitTest.Tools
         {
 
         }
+
+        /// <summary>
+        /// Sets the video output Location, create a path with the test cases name.
+        /// </summary>
+        /// <param name="testName"></param>
         public void SetVideoOutputLocation(string testName)
         {
             OutputDirectoryName = Path.Combine(ConfigurationVariable.TestCaseResultsImageVideoPath, Util.GetCurrectTc());
@@ -34,6 +41,10 @@ namespace Blazor.UnitTest.Tools
                     
             }
         }
+
+        /// <summary>
+        /// This method deletes the all old recordings
+        /// </summary>
         public void DeleteOldRecordings()
         {
             int daysCount = Convert.ToInt16(ConfigurationManager.AppSettings["recordingHistory"]); Directory.GetFiles(OutputDirectoryName)
@@ -42,17 +53,28 @@ namespace Blazor.UnitTest.Tools
                  .ToList()
                  .ForEach(f => f.Delete());
         }
+
+        /// <summary>
+        /// Starts the video recording
+        /// </summary>
         public void StartRecording()
         {
             //DeleteOldRecordings();
             screenCaptureJob.Start();
         }
+
+        /// <summary>
+        /// Stops the video recording
+        /// </summary>
         public void StopRecording()
         {
             screenCaptureJob.Stop();
             //screenCaptureJob.Dispose();
         }
 
+        /// <summary>
+        /// Creates a singleton instance
+        /// </summary>
         private static ScreenRecorder _instance;
         public static ScreenRecorder Instance =>
             _instance ?? (_instance = new ScreenRecorder());

@@ -24,10 +24,11 @@ namespace Blazor.UnitTest.Base
             TestCaseInfo.TestCaseDescription = "";
 
 
-            //TC Folder Name
+            // TC Folder Name
             var tcFolder = Path.Combine(ConfigurationVariable.TestCaseResultsImageVideoPath, TestCaseInfo.TestCaseName);
             Util.SaveCurrentTc(TestCaseInfo.TestCaseName);
             Util.CreateFolder(tcFolder);
+            // Start the new test case logger on extent report
             TestCaseProvider.Instance.AddNewTestCase(TestCaseInfo.TestCaseName, TestCaseInfo.TestCaseDescription);
             MyTestInitializeConnection();
         }

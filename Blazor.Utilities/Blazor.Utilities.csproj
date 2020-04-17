@@ -110,7 +110,6 @@
     <Compile Include="ExceptionMethods\AutomationException.cs" />
     <Compile Include="ExceptionMethods\ControlNameInfo.cs" />
     <Compile Include="ExceptionMethods\ExceptionManager.cs" />
-    <Compile Include="ExtensionMethods\StringExtensionMethods.cs" />
     <Compile Include="Process\ProcessManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

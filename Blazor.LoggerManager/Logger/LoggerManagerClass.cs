@@ -22,9 +22,7 @@ namespace Blazor.LoggerManager.Logger
                     .Enrich.WithProperty("MachineName", Environment.MachineName)
                     .Enrich.WithProperty("BlazorSite", TestCaseInfo.Site)
                     .Enrich.WithProperty("Browser", TestCaseInfo.Browser)
-                    //.WriteTo.Seq("http://10.170.48.153:5341/")
                     .WriteTo.RollingFile(fullPath, outputTemplate: customTemplate)
-                    //.WriteTo.ColoredConsole()
                     .CreateLogger();
             }
             else

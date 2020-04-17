@@ -10,6 +10,9 @@ using Blazor.LoggerManager.Logger;
 
 namespace Blazor.ReportManager
 {
+    /// <summary>
+    /// Log steps status Enum
+    /// </summary>
     public enum LogStepStatus
     {
         Passed,
@@ -17,34 +20,41 @@ namespace Blazor.ReportManager
         Warning,
         Skipped
     };
+
+    /// <summary>
+    /// TestCaseProvider class constains all necessary methods to create a new Extent Report.
+    /// Create a test cases in the report and capture all steps executed.
+    /// Capture and save an Image of the screen when the test case failed, and
+    /// SAve a video with all execution test cases.
+    /// </summary>
     public sealed class TestCaseProvider
     {
-        private string _testName;
         private ExtentTest _currentTestCase;
         private ExtentReports _extentReports;
 
         private readonly string _fileLogsFailed =
             Path.Combine(ConfigurationVariable.TestCaseResultsPath, "BlazorFailedTests");
 
-        private readonly string _fileLogsFailedAndMessage =
-            Path.Combine(ConfigurationVariable.TestCaseResultsPath, "BlazorFailedTestAnsMessage");
+        private readonly string _fileLogsFailedAndMessage = Path.Combine(ConfigurationVariable.TestCaseResultsPath, 
+            "BlazorFailedTestAnsMessage");
 
-        private readonly string _excecutionFinishedFlag =
-            Path.Combine(ConfigurationVariable.TestCaseResultsPath, "BlazorEnd");
+        private readonly string _reprotFileFullPath = Path.Combine(ConfigurationVariable.TestCaseResultsPath,                 
+            ConfigurationVariable.ReportFileName);
 
-        private readonly string _reprotFileFullPath =
-            Path.Combine(ConfigurationVariable.TestCaseResultsPath,
-                ConfigurationVariable.ReportFileName);
-
+        /// <summary>
+        /// Create Singleton instance
+        /// </summary>
         private static TestCaseProvider instance;
         public static TestCaseProvider Instance =>
             instance ?? (instance = new TestCaseProvider());
 
+        /// <summary>
+        /// Create ExtentReport instance and assign the Project Name
+        /// </summary>
         private TestCaseProvider()
         {
             _fileLogsFailed = _fileLogsFailed + ".txt";
             _fileLogsFailedAndMessage = _fileLogsFailedAndMessage + ".txt";
-            _excecutionFinishedFlag = _excecutionFinishedFlag + ".txt";
 
             _extentReports = new ExtentReports(_reprotFileFullPath + ".html", false, DisplayOrder.NewestFirst);
             _extentReports.AssignProject("Blazor");
@@ -63,18 +73,28 @@ namespace Blazor.ReportManager
             }
         }
 
+        /// <summary>
+        /// This method allow us strat the test cases to Extent report
+        /// </summary>
+        /// <param name="testName">string test name</param>
+        /// <param name="description">string test description</param>
         public void AddNewTestCase(string testName, string description)
         {
             _currentTestCase = _extentReports.StartTest(testName, description);
-            _testName = testName;
         }
 
+        /// <summary>
+        /// This method allow us end the test cases to extent report and create the report
+        /// </summary>
         public void EndCurrentTestCase()
         {
             _extentReports.EndTest(_currentTestCase);
             _extentReports.Flush();
         }
 
+        /// <summary>
+        /// This method allow us add the screenshot in the test cases when the step is failed
+        /// </summary>
         private void AddPicturesOnFail()
         {
             try
@@ -89,6 +109,9 @@ namespace Blazor.ReportManager
             }
         }
 
+        /// <summary>
+        /// This methos allow us add the an screen cast whit all test cases execution
+        /// </summary>
         private void AddScreenCast()
         {
             string videoPath = ConfigurationVariable.VideoPath;
@@ -101,12 +124,12 @@ namespace Blazor.ReportManager
             }
         }
 
-        public void AddBDDStepOnStepDefinitions(string stepType, string stepDefinitionName)
-        { 
-            string stepConvert = $"<span style='color:blue'>{stepType} : {stepDefinitionName}</span>";
-            _currentTestCase.Log(LogStatus.Pass, stepConvert);
-        }
-
+        /// <summary>
+        /// This method allows us all actions or steps performed in the test cases execution.
+        /// </summary>
+        /// <param name="logStepStatus"></param>
+        /// <param name="details"></param>
+        /// <param name="exceptionMessage"></param>
         public void AddStepInCurrentTestCase(LogStepStatus logStepStatus,
             string details = "", string exceptionMessage = "")
         {
@@ -133,6 +156,14 @@ namespace Blazor.ReportManager
             }
         }
 
+        /// <summary>
+        /// This method allow us create log of test cases whit the final status
+        /// </summary>
+        /// <param name="status">string Final Status</param>
+        /// <param name="errorMessage">string Error test case Message</param>
+        /// <param name="testContextStackTrace">string Conext Stack Trace</param>
+        /// <param name="tcFullName">string Test Case full name</param>
+        /// <param name="tcName">string Test Case name</param>
         public void LogTestCaseFinalStatus(string status, string errorMessage,
             string testContextStackTrace, string tcFullName, string tcName)
         {
@@ -180,6 +211,15 @@ namespace Blazor.ReportManager
             _currentTestCase.Log(logStatus, @"Test ended with: [ " + logStatus + @" ]. " + fullError);
         }
 
+        /// <summary>
+        /// This method allow us process all data when an test case's step failed
+        /// </summary>
+        /// <param name="errorMessage">string error message</param>
+        /// <param name="testContextStackTrace">string context stack trace</param>
+        /// <param name="tcFullName">string Test Case full name</param>
+        /// <param name="tcName">string Test Case name</param>
+        /// <param name="finalStatus">string Test Case final status</param>
+        /// <returns></returns>
         private string TestCaseHasFailed(string errorMessage, string testContextStackTrace, string tcFullName, 
             string tcName, LogStatus finalStatus)
         {
@@ -231,6 +271,10 @@ namespace Blazor.ReportManager
             return fullError;
         }
 
+        /// <summary>
+        /// Write the Logs Failed on txt file and in the Extent Report.
+        /// </summary>
+        /// <param name="tcName"></param>
         private void LogFailedTCs(string tcName)
         {
             try
@@ -258,6 +302,11 @@ namespace Blazor.ReportManager
             }
         }
 
+        /// <summary>
+        /// Write the Log Filed Test case with Error Message
+        /// </summary>
+        /// <param name="tcName"></param>
+        /// <param name="errorMessage"></param>
         private void LogFailedTcsWithErrorMessage(string tcName, string errorMessage)
         {
             try

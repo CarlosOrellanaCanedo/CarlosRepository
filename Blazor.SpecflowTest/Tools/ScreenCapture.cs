@@ -8,6 +8,9 @@ namespace Blazor.SpecflowTest.Tools
 {
     public static class ScreenCapture
     {
+        /// <summary>
+        /// The method helps to take an screen shot when a step in the test cases failed
+        /// </summary>
         public static void TakeScreenshot()
         {
             //Path to save the image

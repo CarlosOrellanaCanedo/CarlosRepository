@@ -6,6 +6,9 @@ namespace Blazor.Pages.AccessToProjects.LeftMenu
 {
     public class LeftMenuPage : ILeftMenuPage
     {
+        /// <summary>
+        /// Get the Left Menu container
+        /// </summary>
         private IWebElement GetLeftContainer
         {
             get
@@ -16,6 +19,11 @@ namespace Blazor.Pages.AccessToProjects.LeftMenu
                 return SeleniumActions.GetElementWait(By.Id("nav"), "Left Pane");
             }
         }
+
+        /// <summary>
+        /// Select the Group using the group name displayed in the page
+        /// </summary>
+        /// <param name="groupName"></param>
         public void SelectGroup(string groupName)
         {
             IWebElement leftContainer = GetLeftContainer;
