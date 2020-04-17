@@ -26,6 +26,17 @@ Download
 Execute the following command on: Tool > NuGet Package Manager > Package Manager Console if the package is does not exist on your Visual Studio
 * Install-Package Microsoft.Expression.Encoder -Version 4.0.4276.3 => link: https://www.nuget.org/packages/Microsoft.Expression.Encoder/4.0.4276.3
 
+Possible Errors:
+
+A common error when starting the framework is not configuring the driver, and you can see the following error when executing a test case:
+
+OpenQA.Selenium.DriverServiceNotFoundException : The file \\Blazor.UnitTest\bin\Debug\Drivers\chromedriver.exe does not exist. The driver can be downloaded at http://chromedriver.storage.googleapis.com/index.html
+
+Solution: 
+Go to Blazor Solution > Blazor.Core > expand Drivers folder
+Right click on chromedriver.exe
+Click properties, a Properties windows is displayed
+Select 'Copy always' option, on Copy to Output Directory.
 ```
 
 ### Installing
